@@ -14,7 +14,7 @@ namespace Logic.Foundation.Io
     {
         public string Send(string target, string name, string text)
         {
-            NamedPipeClientStream pipeClient = new NamedPipeClientStream(target, name, PipeDirection.InOut, PipeOptions.None, TokenImpersonationLevel.Impersonation);
+            NamedPipeClientStream pipeClient = new NamedPipeClientStream(target, name);
             pipeClient.Connect();
             StreamReader reader = new StreamReader(pipeClient);
             StreamWriter writer = new StreamWriter(pipeClient);

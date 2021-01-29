@@ -62,7 +62,7 @@ namespace UI.GimmeAScreenshotPleaseUI
 
         public void GetScreenShot() 
         {
-            this.clientWorkflow.GetScreenshot(this.Target);
+            this.Screenshot = this.clientWorkflow.GetScreenshot(this.Target);
         }
 
         private void OnPropertyChanged([CallerMemberName] string propName = "") 
