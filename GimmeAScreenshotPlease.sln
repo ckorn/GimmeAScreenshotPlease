@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimmeAScreenshotPlease.UI", "UI\GimmeAScreenshotPlease.UI\GimmeAScreenshotPlease.UI.csproj", "{B31177D5-327E-4D98-8F4D-AF9F618FF75F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimmeAScreenshotPleaseUI", "UI\GimmeAScreenshotPleaseUI\GimmeAScreenshotPleaseUI.csproj", "{B31177D5-327E-4D98-8F4D-AF9F618FF75F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataClasses", "DataClasses", "{DD695E6D-B02A-4ED1-9DE8-9EFF6CF73CF2}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotClientWorkflow", "Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj", "{95DCB48A-2272-41A8-891A-9B7626031851}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotClientWorkflow.Contract", "Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj", "{09A8C334-E806-4777-9AED-B43257E27F56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constants", "DataClasses\Constants\Constants.csproj", "{BF6178E2-3708-411C-8924-9F31A3336AAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{09A8C334-E806-4777-9AED-B43257E27F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09A8C334-E806-4777-9AED-B43257E27F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09A8C334-E806-4777-9AED-B43257E27F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6178E2-3708-411C-8924-9F31A3336AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6178E2-3708-411C-8924-9F31A3336AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6178E2-3708-411C-8924-9F31A3336AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6178E2-3708-411C-8924-9F31A3336AAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{1EA51A89-33DF-4629-B567-34C87564E6D0} = {5BFBAD11-9AC0-4719-837D-9F77DF6806B2}
 		{95DCB48A-2272-41A8-891A-9B7626031851} = {5BFBAD11-9AC0-4719-837D-9F77DF6806B2}
 		{09A8C334-E806-4777-9AED-B43257E27F56} = {5BFBAD11-9AC0-4719-837D-9F77DF6806B2}
+		{BF6178E2-3708-411C-8924-9F31A3336AAB} = {DD695E6D-B02A-4ED1-9DE8-9EFF6CF73CF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B43E731-2B89-4F38-80F7-19D0917FFDAE}

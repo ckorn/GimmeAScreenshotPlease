@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UI.GimmeAScreenshotPlease.UI
+namespace Logic.Foundation.Graphics.Contract
 {
-    class GimmeAScreenshotPleaseViewModel
+    public interface IScreenshot
     {
+        Bitmap GetFullScreen();
     }
 }

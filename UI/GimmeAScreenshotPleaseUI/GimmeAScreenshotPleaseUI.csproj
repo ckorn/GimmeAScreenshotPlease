@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B31177D5-327E-4D98-8F4D-AF9F618FF75F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI.GimmeAScreenshotPleaseUI</RootNamespace>
+    <AssemblyName>GimmeAScreenshotPleaseUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GimmeAScreenshotPleaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GimmeAScreenshotPleaseForm.Designer.cs">
+      <DependentUpon>GimmeAScreenshotPleaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GimmeAScreenshotPleaseViewModel.cs" />
+    <EmbeddedResource Include="GimmeAScreenshotPleaseForm.resx">
+      <DependentUpon>GimmeAScreenshotPleaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\DataSources\GimmeAScreenshotPleaseViewModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj">
+      <Project>{09a8c334-e806-4777-9aed-b43257e27f56}</Project>
+      <Name>ScreenshotClientWorkflow.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj">
+      <Project>{95dcb48a-2272-41a8-891a-9b7626031851}</Project>
+      <Name>ScreenshotClientWorkflow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotServerWorkflow.Contract\ScreenshotServerWorkflow.Contract.csproj">
+      <Project>{1ea51a89-33df-4629-b567-34c87564e6d0}</Project>
+      <Name>ScreenshotServerWorkflow.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotServerWorkflow\ScreenshotServerWorkflow.csproj">
+      <Project>{cadf6af6-b313-4eb0-8e83-706391e122c5}</Project>
+      <Name>ScreenshotServerWorkflow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Domain\Client.Contract\Client.Contract.csproj">
+      <Project>{f7ec64a7-f348-41f7-ab6d-6efb6f2054c0}</Project>
+      <Name>Client.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Domain\Client\Client.csproj">
+      <Project>{799dd5a5-9fde-4cd7-b0f0-b09edc493f77}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Domain\Server.Contract\Server.Contract.csproj">
+      <Project>{95553f46-8fa3-4126-926a-be11fe8b4285}</Project>
+      <Name>Server.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Domain\Server\Server.csproj">
+      <Project>{e8f7e386-0f92-4b72-97cf-3a35fdbda7db}</Project>
+      <Name>Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Graphics.Contract\Graphics.Contract.csproj">
+      <Project>{3f40dff0-2fd5-4675-b6c0-568515f64ad8}</Project>
+      <Name>Graphics.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Graphics\Graphics.csproj">
+      <Project>{84204418-9f53-4a49-bbf3-858fc2cf372c}</Project>
+      <Name>Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Io.Contract\Io.Contract.csproj">
+      <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
+      <Name>Io.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Io\Io.csproj">
+      <Project>{45e3cf2d-41ee-408d-b44d-2f27a79aa826}</Project>
+      <Name>Io</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

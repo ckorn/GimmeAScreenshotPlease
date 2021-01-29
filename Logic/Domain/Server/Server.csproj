@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenshotServer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Graphics.Contract\Graphics.Contract.csproj">
+      <Project>{3f40dff0-2fd5-4675-b6c0-568515f64ad8}</Project>
+      <Name>Graphics.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Io.Contract\Io.Contract.csproj">
+      <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
+      <Name>Io.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.Contract\Server.Contract.csproj">
+      <Project>{95553f46-8fa3-4126-926a-be11fe8b4285}</Project>
+      <Name>Server.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

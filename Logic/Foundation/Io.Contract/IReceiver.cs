@@ -8,6 +8,6 @@ namespace Logic.Foundation.Io.Contract
 {
     public interface IReceiver
     {
-        string Receive();
+        void Start(string name, Func<string, string> onReceive);
     }
 }

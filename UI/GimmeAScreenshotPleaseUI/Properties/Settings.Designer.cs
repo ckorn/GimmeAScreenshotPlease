@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI.GimmeAScreenshotPlease.UI.Properties {
+namespace UI.GimmeAScreenshotPleaseUI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

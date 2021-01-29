@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerWorkflow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DataClasses\Constants\Constants.csproj">
+      <Project>{bf6178e2-3708-411c-8924-9f31a3336aab}</Project>
+      <Name>Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Server.Contract\Server.Contract.csproj">
+      <Project>{95553f46-8fa3-4126-926a-be11fe8b4285}</Project>
+      <Name>Server.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScreenshotServerWorkflow.Contract\ScreenshotServerWorkflow.Contract.csproj">
+      <Project>{1ea51a89-33df-4629-b567-34c87564e6d0}</Project>
+      <Name>ScreenshotServerWorkflow.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

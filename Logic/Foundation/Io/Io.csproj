@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NamedPipeReceiver.cs" />
+    <Compile Include="NamedPipeSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Io.Contract\Io.Contract.csproj">
+      <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
+      <Name>Io.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
