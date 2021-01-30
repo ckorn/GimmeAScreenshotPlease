@@ -46,9 +46,9 @@
     <Compile Include="ServerWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DataClasses\Constants\Constants.csproj">
-      <Project>{bf6178e2-3708-411c-8924-9f31a3336aab}</Project>
-      <Name>Constants</Name>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
+      <Project>{22fee8c4-3711-45e8-8085-02754e1eb77f}</Project>
+      <Name>DataClasses</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Domain\Server.Contract\Server.Contract.csproj">
       <Project>{95553f46-8fa3-4126-926a-be11fe8b4285}</Project>

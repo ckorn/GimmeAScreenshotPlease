@@ -20,7 +20,7 @@ namespace Logic.Business.ScreenshotClientWorkflow
 
         public Bitmap GetScreenshot(string target)
         {
-            return this.client.GetScreenshot(target, DataClasses.Constants.ConnectionSettings.PipeName);
+            return this.client.GetScreenshot(target, CrossCutting.DataClasses.ConnectionSettings.PipeName);
         }
     }
 }

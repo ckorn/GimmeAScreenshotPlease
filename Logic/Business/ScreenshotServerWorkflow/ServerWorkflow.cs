@@ -28,7 +28,9 @@ namespace Logic.Business.ScreenshotServerWorkflow
 
         public void Start()
         {
-            this.screenshotServer.Start(DataClasses.Constants.ConnectionSettings.PipeName, DataClasses.Constants.ScreenshotOptions.MaxWidth, DataClasses.Constants.ScreenshotOptions.MaxHeight);
+            this.screenshotServer.Start(CrossCutting.DataClasses.ConnectionSettings.PipeName,
+                CrossCutting.DataClasses.ScreenshotOptions.MaxWidth,
+                CrossCutting.DataClasses.ScreenshotOptions.MaxHeight);
         }
     }
 }
