@@ -8,7 +8,7 @@ In clientmode you can ask the server to make a screenshot and send it back.
 The use case is simple:
 I want to play Fallout 4!
 
-Unfortunately, the loading speed it limited by the frames per second.
+Unfortunately, the loading speed is limited by the frames per second.
 I know there is a fix for it by unlimiting the frames in some ini file.
 Then the game loads within seconds instead of several minutes!
 (But some mechanics like lockpicking are broken then because you just move to fast).
