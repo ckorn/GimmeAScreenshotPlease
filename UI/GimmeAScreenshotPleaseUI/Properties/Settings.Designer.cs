@@ -22,5 +22,29 @@ namespace UI.GimmeAScreenshotPleaseUI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpgradePending {
+            get {
+                return ((bool)(this["UpgradePending"]));
+            }
+            set {
+                this["UpgradePending"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Target {
+            get {
+                return ((string)(this["Target"]));
+            }
+            set {
+                this["Target"] = value;
+            }
+        }
     }
 }

@@ -15,6 +15,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.GimmeAScreenshotPleaseUI.Properties;
 
 namespace UI.GimmeAScreenshotPleaseUI
 {
@@ -23,7 +24,8 @@ namespace UI.GimmeAScreenshotPleaseUI
         private readonly IClientWorkflow clientWorkflow;
         private readonly IServerWorkflow serverWorkflow;
 
-        public string Target { get; set; }
+        public string Target { get => target; set { if (Target != value) { target = value; OnPropertyChanged(); } } }
+        private string target = "";
         public bool SendEnabled { get => sendEnabled; set { if (SendEnabled != value) { sendEnabled = value; OnPropertyChanged(); } } }
         private bool sendEnabled = true;
 
@@ -39,6 +41,18 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender()));
             this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
+
+            this.Target = Properties.Settings.Default.Target;
+            this.PropertyChanged += GimmeAScreenshotPleaseViewModel_PropertyChanged;
+        }
+
+        private void GimmeAScreenshotPleaseViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Target))
+            {
+                Settings.Default.Target = this.Target;
+                Settings.Default.Save();
+            }
         }
 
         public void SetControl(Control control) 
