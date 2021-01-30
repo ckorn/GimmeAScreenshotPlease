@@ -25,3 +25,7 @@ But I also have a notebook next to me when I play in my living room
 
 So when I disable Steam Link, I just look at this app to see when the loading screen
 is gone and enable Steam Link again ^^
+
+Credits:
+
+Icons made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect "Pixel perfect") from [www.flaticon.com](https://www.flaticon.com "Flaticon")

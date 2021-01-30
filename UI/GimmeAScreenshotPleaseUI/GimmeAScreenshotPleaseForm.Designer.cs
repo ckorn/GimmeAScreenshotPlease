@@ -30,28 +30,30 @@ namespace UI.GimmeAScreenshotPleaseUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GimmeAScreenshotPleaseForm));
             this.label1 = new System.Windows.Forms.Label();
             this.dfTarget = new System.Windows.Forms.TextBox();
+            this.bindingSourceViewModel = new System.Windows.Forms.BindingSource(this.components);
             this.buttonListen = new System.Windows.Forms.Button();
             this.pbGet = new System.Windows.Forms.Button();
             this.pictureBoxScreenshot = new System.Windows.Forms.PictureBox();
             this.panelTop = new System.Windows.Forms.Panel();
             this.groupBoxServer = new System.Windows.Forms.GroupBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
-            this.bindingSourceViewModel = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenshot)).BeginInit();
             this.panelTop.SuspendLayout();
             this.groupBoxServer.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 24);
+            this.label1.Location = new System.Drawing.Point(7, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(54, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Target:";
             // 
@@ -59,17 +61,23 @@ namespace UI.GimmeAScreenshotPleaseUI
             // 
             this.dfTarget.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceViewModel, "Target", true));
             this.dfTarget.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.dfTarget.Location = new System.Drawing.Point(52, 19);
+            this.dfTarget.Location = new System.Drawing.Point(69, 23);
+            this.dfTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dfTarget.Name = "dfTarget";
-            this.dfTarget.Size = new System.Drawing.Size(100, 20);
+            this.dfTarget.Size = new System.Drawing.Size(132, 22);
             this.dfTarget.TabIndex = 1;
+            // 
+            // bindingSourceViewModel
+            // 
+            this.bindingSourceViewModel.DataSource = typeof(UI.GimmeAScreenshotPleaseUI.GimmeAScreenshotPleaseViewModel);
             // 
             // buttonListen
             // 
             this.buttonListen.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.buttonListen.Location = new System.Drawing.Point(6, 19);
+            this.buttonListen.Location = new System.Drawing.Point(8, 23);
+            this.buttonListen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonListen.Name = "buttonListen";
-            this.buttonListen.Size = new System.Drawing.Size(75, 23);
+            this.buttonListen.Size = new System.Drawing.Size(100, 28);
             this.buttonListen.TabIndex = 2;
             this.buttonListen.Text = "Listen";
             this.buttonListen.UseVisualStyleBackColor = true;
@@ -78,9 +86,10 @@ namespace UI.GimmeAScreenshotPleaseUI
             // pbGet
             // 
             this.pbGet.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.pbGet.Location = new System.Drawing.Point(158, 17);
+            this.pbGet.Location = new System.Drawing.Point(211, 21);
+            this.pbGet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbGet.Name = "pbGet";
-            this.pbGet.Size = new System.Drawing.Size(75, 23);
+            this.pbGet.Size = new System.Drawing.Size(100, 28);
             this.pbGet.TabIndex = 3;
             this.pbGet.Text = "Get";
             this.pbGet.UseVisualStyleBackColor = true;
@@ -90,9 +99,10 @@ namespace UI.GimmeAScreenshotPleaseUI
             // 
             this.pictureBoxScreenshot.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.bindingSourceViewModel, "Screenshot", true));
             this.pictureBoxScreenshot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxScreenshot.Location = new System.Drawing.Point(0, 58);
+            this.pictureBoxScreenshot.Location = new System.Drawing.Point(0, 71);
+            this.pictureBoxScreenshot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxScreenshot.Name = "pictureBoxScreenshot";
-            this.pictureBoxScreenshot.Size = new System.Drawing.Size(800, 392);
+            this.pictureBoxScreenshot.Size = new System.Drawing.Size(1067, 483);
             this.pictureBoxScreenshot.TabIndex = 4;
             this.pictureBoxScreenshot.TabStop = false;
             // 
@@ -102,16 +112,19 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.panelTop.Controls.Add(this.groupBoxClient);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(800, 58);
+            this.panelTop.Size = new System.Drawing.Size(1067, 71);
             this.panelTop.TabIndex = 5;
             // 
             // groupBoxServer
             // 
             this.groupBoxServer.Controls.Add(this.buttonListen);
-            this.groupBoxServer.Location = new System.Drawing.Point(296, 3);
+            this.groupBoxServer.Location = new System.Drawing.Point(395, 4);
+            this.groupBoxServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxServer.Name = "groupBoxServer";
-            this.groupBoxServer.Size = new System.Drawing.Size(93, 49);
+            this.groupBoxServer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxServer.Size = new System.Drawing.Size(124, 60);
             this.groupBoxServer.TabIndex = 7;
             this.groupBoxServer.TabStop = false;
             this.groupBoxServer.Text = "Server";
@@ -121,32 +134,32 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.groupBoxClient.Controls.Add(this.dfTarget);
             this.groupBoxClient.Controls.Add(this.label1);
             this.groupBoxClient.Controls.Add(this.pbGet);
-            this.groupBoxClient.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxClient.Location = new System.Drawing.Point(4, 4);
+            this.groupBoxClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxClient.Name = "groupBoxClient";
-            this.groupBoxClient.Size = new System.Drawing.Size(244, 49);
+            this.groupBoxClient.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxClient.Size = new System.Drawing.Size(325, 60);
             this.groupBoxClient.TabIndex = 6;
             this.groupBoxClient.TabStop = false;
             this.groupBoxClient.Text = "Client";
             // 
-            // bindingSourceViewModel
-            // 
-            this.bindingSourceViewModel.DataSource = typeof(UI.GimmeAScreenshotPleaseUI.GimmeAScreenshotPleaseViewModel);
-            // 
             // GimmeAScreenshotPleaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.pictureBoxScreenshot);
             this.Controls.Add(this.panelTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GimmeAScreenshotPleaseForm";
             this.Text = "GimmeAScreenshotPlease";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenshot)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.groupBoxServer.ResumeLayout(false);
             this.groupBoxClient.ResumeLayout(false);
             this.groupBoxClient.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).EndInit();
             this.ResumeLayout(false);
 
         }
