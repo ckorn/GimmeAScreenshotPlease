@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,10 @@
     <Compile Include="ScreenshotServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
+      <Project>{22fee8c4-3711-45e8-8085-02754e1eb77f}</Project>
+      <Name>DataClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Foundation\Encodings.Contract\Encodings.Contract.csproj">
       <Project>{4a594eba-482e-4a2d-8ce0-7aec059615ea}</Project>
       <Name>Encodings.Contract</Name>
@@ -57,6 +62,10 @@
     <ProjectReference Include="..\..\Foundation\Io.Contract\Io.Contract.csproj">
       <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
       <Name>Io.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Serialization.Contract\Serialization.Contract.csproj">
+      <Project>{e428141b-971f-495e-bf23-277433eb8e32}</Project>
+      <Name>Serialization.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\Server.Contract\Server.Contract.csproj">
       <Project>{95553f46-8fa3-4126-926a-be11fe8b4285}</Project>

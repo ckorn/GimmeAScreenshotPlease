@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7EC64A7-F348-41F7-AB6D-6EFB6F2054C0}</ProjectGuid>
+    <ProjectGuid>{6B38A64D-27B0-4F98-BA53-4204B4394C58}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Logic.Foundation.Client.Contract</RootNamespace>
-    <AssemblyName>Client.Contract</AssemblyName>
+    <RootNamespace>Logic.Foundation.Serialization</RootNamespace>
+    <AssemblyName>Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,9 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,14 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScreenshotClient.cs" />
+    <Compile Include="JsonDeserializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JsonSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
-      <Project>{22fee8c4-3711-45e8-8085-02754e1eb77f}</Project>
-      <Name>DataClasses</Name>
+    <ProjectReference Include="..\Serialization.Contract\Serialization.Contract.csproj">
+      <Project>{e428141b-971f-495e-bf23-277433eb8e32}</Project>
+      <Name>Serialization.Contract</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

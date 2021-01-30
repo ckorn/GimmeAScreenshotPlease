@@ -11,6 +11,8 @@ namespace Logic.Foundation.Server.Contract
     public interface IScreenshotServer
     {
         event EventHandler<Bitmap> ScreenshotSent;
-        void Start(string name, int maxWidth, int maxHeight);
+        void StartSendPrimaryScreen(int maxWidth, int maxHeight);
+        void StartSendScreen(int maxWidth, int maxHeight);
+        void StartSendScreenList();
     }
 }

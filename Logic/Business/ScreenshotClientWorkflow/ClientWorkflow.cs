@@ -1,4 +1,5 @@
-﻿using Logic.Business.ScreenshotClientWorkflow.Contract;
+﻿using CrossCutting.DataClasses;
+using Logic.Business.ScreenshotClientWorkflow.Contract;
 using Logic.Foundation.Client.Contract;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,19 @@ namespace Logic.Business.ScreenshotClientWorkflow
             this.client = client;
         }
 
-        public Bitmap GetScreenshot(string target)
+        public Bitmap GetScreenshotPrimaryScreen(string target)
         {
-            return this.client.GetScreenshot(target, CrossCutting.DataClasses.ConnectionSettings.PipeName);
+            return this.client.GetScreenshot(target);
+        }
+
+        public Bitmap GetScreenshotForScreen(string target, ScreenInformation screenInformation)
+        {
+            return this.client.GetScreenshot(target, screenInformation);
+        }
+
+        public IReadOnlyList<ScreenInformation> GetScreenInformationList(string target)
+        {
+            return this.client.GetScreenInformationList(target);
         }
     }
 }

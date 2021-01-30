@@ -26,11 +26,21 @@ namespace Logic.Business.ScreenshotServerWorkflow
             this.ScreenshotSent?.Invoke(sender, e);
         }
 
-        public void Start()
+        public void StartSendPrimaryScreen()
         {
-            this.screenshotServer.Start(CrossCutting.DataClasses.ConnectionSettings.PipeName,
-                CrossCutting.DataClasses.ScreenshotOptions.MaxWidth,
+            this.screenshotServer.StartSendPrimaryScreen(CrossCutting.DataClasses.ScreenshotOptions.MaxWidth,
                 CrossCutting.DataClasses.ScreenshotOptions.MaxHeight);
+        }
+
+        public void StartSendScreen()
+        {
+            this.screenshotServer.StartSendScreen(CrossCutting.DataClasses.ScreenshotOptions.MaxWidth,
+                CrossCutting.DataClasses.ScreenshotOptions.MaxHeight);
+        }
+
+        public void StartSendScreenList()
+        {
+            this.screenshotServer.StartSendScreenList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Logic.Business.ScreenshotClientWorkflow;
+﻿using CrossCutting.DataClasses;
+using Logic.Business.ScreenshotClientWorkflow;
 using Logic.Business.ScreenshotClientWorkflow.Contract;
 using Logic.Business.ScreenshotServerWorkflow;
 using Logic.Business.ScreenshotServerWorkflow.Contract;
@@ -6,6 +7,7 @@ using Logic.Foundation.Client;
 using Logic.Foundation.Encodings;
 using Logic.Foundation.Graphics;
 using Logic.Foundation.Io;
+using Logic.Foundation.Serialization;
 using Logic.Foundation.Server;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,7 @@ namespace UI.GimmeAScreenshotPleaseUI
         private readonly IServerWorkflow serverWorkflow;
 
         public string Target { get => target; set { if (Target != value) { target = value; OnPropertyChanged(); } } }
+
         private string target = "";
         public bool SendEnabled { get => sendEnabled; set { if (SendEnabled != value) { sendEnabled = value; OnPropertyChanged(); } } }
         private bool sendEnabled = true;
@@ -35,14 +38,17 @@ namespace UI.GimmeAScreenshotPleaseUI
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public BindingList<ScreenInformation> ScreenInformationList { get; set; } = new BindingList<ScreenInformation>();
+        public ScreenInformation ScreenInformationEditValue { get; set; }
+
         private Control control;
 
         public GimmeAScreenshotPleaseViewModel()
         {
             this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender(),
-                new BinaryDecoder()));
+                new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
             this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize(),
-                new BinaryEncoder()));
+                new BinaryEncoder(), new JsonSerializer(), new JsonDeserializer()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
 
             this.Target = Properties.Settings.Default.Target;
@@ -73,13 +79,40 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.SendEnabled = false;
             Task.Factory.StartNew(() =>
             {
-                this.serverWorkflow.Start();
+                this.serverWorkflow.StartSendPrimaryScreen();
+            });
+            Task.Factory.StartNew(() =>
+            {
+                this.serverWorkflow.StartSendScreen();
+            });
+            Task.Factory.StartNew(() =>
+            {
+                this.serverWorkflow.StartSendScreenList();
             });
         }
 
         public void GetScreenShot() 
         {
-            this.Screenshot = this.clientWorkflow.GetScreenshot(this.Target);
+            if ((ScreenInformationEditValue?.Index ?? -1) >= 0)
+            {
+                this.Screenshot = this.clientWorkflow.GetScreenshotForScreen(this.Target, this.ScreenInformationEditValue);
+            }
+            else
+            {
+                this.Screenshot = this.clientWorkflow.GetScreenshotPrimaryScreen(this.Target);
+            }
+        }
+
+        public void GetScreenList()
+        {
+            IReadOnlyList<ScreenInformation> screenInformationList = this.clientWorkflow.GetScreenInformationList(this.Target);
+            this.ScreenInformationList.Clear();
+            this.ScreenInformationList.Add(new ScreenInformation(-1, string.Empty));
+            foreach (ScreenInformation screenInformation in screenInformationList)
+            {
+                this.ScreenInformationList.Add(screenInformation);
+            }
+            this.ScreenInformationEditValue = this.ScreenInformationList.First();
         }
 
         private void OnPropertyChanged([CallerMemberName] string propName = "") 

@@ -46,6 +46,10 @@
     <Compile Include="ScreenshotClient.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
+      <Project>{22FEE8C4-3711-45E8-8085-02754E1EB77F}</Project>
+      <Name>DataClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Foundation\Encodings.Contract\Encodings.Contract.csproj">
       <Project>{4a594eba-482e-4a2d-8ce0-7aec059615ea}</Project>
       <Name>Encodings.Contract</Name>
@@ -53,6 +57,10 @@
     <ProjectReference Include="..\..\Foundation\Io.Contract\Io.Contract.csproj">
       <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
       <Name>Io.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Serialization.Contract\Serialization.Contract.csproj">
+      <Project>{e428141b-971f-495e-bf23-277433eb8e32}</Project>
+      <Name>Serialization.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\Client.Contract\Client.Contract.csproj">
       <Project>{f7ec64a7-f348-41f7-ab6d-6efb6f2054c0}</Project>

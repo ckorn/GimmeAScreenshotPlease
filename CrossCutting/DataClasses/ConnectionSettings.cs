@@ -8,6 +8,8 @@ namespace CrossCutting.DataClasses
 {
     public static class ConnectionSettings
     {
-        public const string PipeName = "GimmeAScreenshotPlease.SendScreenshot";
+        public const string PrimaryScreenPipeName = "GimmeAScreenshotPlease.SendScreenshotPrimaryScreen";
+        public const string ScreenPipeName = "GimmeAScreenshotPlease.SendScreenshotForScreen";
+        public const string ScreenListPipeName = "GimmeAScreenshotPlease.SendScreenList";
     }
 }

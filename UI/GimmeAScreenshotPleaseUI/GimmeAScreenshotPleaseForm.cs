@@ -30,5 +30,10 @@ namespace UI.GimmeAScreenshotPleaseUI
         {
             this.viewModel.StartServer();
         }
+
+        private void pbGetScreens_Click(object sender, EventArgs e)
+        {
+            this.viewModel.GetScreenList();
+        }
     }
 }

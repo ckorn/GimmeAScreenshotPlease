@@ -10,6 +10,8 @@ namespace Logic.Business.ScreenshotServerWorkflow.Contract
     public interface IServerWorkflow
     {
         event EventHandler<Bitmap> ScreenshotSent;
-        void Start();
+        void StartSendPrimaryScreen();
+        void StartSendScreen();
+        void StartSendScreenList();
     }
 }

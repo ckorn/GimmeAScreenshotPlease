@@ -10,5 +10,16 @@ namespace CrossCutting.DataClasses
     {
         public int Index { get; set; }
         public string Name { get; set; }
+
+        public ScreenInformation()
+        {
+
+        }
+
+        public ScreenInformation(int index, string name)
+        {
+            Index = index;
+            Name = name;
+        }
     }
 }

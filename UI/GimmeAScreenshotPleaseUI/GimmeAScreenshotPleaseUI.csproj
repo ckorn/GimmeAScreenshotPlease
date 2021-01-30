@@ -86,6 +86,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\DataClasses\DataClasses.csproj">
+      <Project>{22fee8c4-3711-45e8-8085-02754e1eb77f}</Project>
+      <Name>DataClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj">
       <Project>{09a8c334-e806-4777-9aed-b43257e27f56}</Project>
       <Name>ScreenshotClientWorkflow.Contract</Name>
@@ -141,6 +145,14 @@
     <ProjectReference Include="..\..\Logic\Foundation\Io\Io.csproj">
       <Project>{45e3cf2d-41ee-408d-b44d-2f27a79aa826}</Project>
       <Name>Io</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj">
+      <Project>{e428141b-971f-495e-bf23-277433eb8e32}</Project>
+      <Name>Serialization.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Serialization\Serialization.csproj">
+      <Project>{6b38a64d-27b0-4f98-ba53-4204b4394c58}</Project>
+      <Name>Serialization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

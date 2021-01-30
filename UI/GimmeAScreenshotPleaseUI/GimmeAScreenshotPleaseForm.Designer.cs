@@ -40,20 +40,23 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.panelTop = new System.Windows.Forms.Panel();
             this.groupBoxServer = new System.Windows.Forms.GroupBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
+            this.pbGetScreens = new System.Windows.Forms.Button();
+            this.cmbScreenList = new System.Windows.Forms.ComboBox();
+            this.screenInformationListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenshot)).BeginInit();
             this.panelTop.SuspendLayout();
             this.groupBoxServer.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.screenInformationListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(5, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Target:";
             // 
@@ -61,10 +64,9 @@ namespace UI.GimmeAScreenshotPleaseUI
             // 
             this.dfTarget.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceViewModel, "Target", true));
             this.dfTarget.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.dfTarget.Location = new System.Drawing.Point(69, 23);
-            this.dfTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dfTarget.Location = new System.Drawing.Point(52, 19);
             this.dfTarget.Name = "dfTarget";
-            this.dfTarget.Size = new System.Drawing.Size(132, 22);
+            this.dfTarget.Size = new System.Drawing.Size(100, 20);
             this.dfTarget.TabIndex = 1;
             // 
             // bindingSourceViewModel
@@ -74,10 +76,9 @@ namespace UI.GimmeAScreenshotPleaseUI
             // buttonListen
             // 
             this.buttonListen.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.buttonListen.Location = new System.Drawing.Point(8, 23);
-            this.buttonListen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonListen.Location = new System.Drawing.Point(6, 19);
             this.buttonListen.Name = "buttonListen";
-            this.buttonListen.Size = new System.Drawing.Size(100, 28);
+            this.buttonListen.Size = new System.Drawing.Size(75, 23);
             this.buttonListen.TabIndex = 2;
             this.buttonListen.Text = "Listen";
             this.buttonListen.UseVisualStyleBackColor = true;
@@ -86,10 +87,9 @@ namespace UI.GimmeAScreenshotPleaseUI
             // pbGet
             // 
             this.pbGet.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
-            this.pbGet.Location = new System.Drawing.Point(211, 21);
-            this.pbGet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbGet.Location = new System.Drawing.Point(158, 17);
             this.pbGet.Name = "pbGet";
-            this.pbGet.Size = new System.Drawing.Size(100, 28);
+            this.pbGet.Size = new System.Drawing.Size(75, 23);
             this.pbGet.TabIndex = 3;
             this.pbGet.Text = "Get";
             this.pbGet.UseVisualStyleBackColor = true;
@@ -99,10 +99,9 @@ namespace UI.GimmeAScreenshotPleaseUI
             // 
             this.pictureBoxScreenshot.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.bindingSourceViewModel, "Screenshot", true));
             this.pictureBoxScreenshot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxScreenshot.Location = new System.Drawing.Point(0, 71);
-            this.pictureBoxScreenshot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxScreenshot.Location = new System.Drawing.Point(0, 58);
             this.pictureBoxScreenshot.Name = "pictureBoxScreenshot";
-            this.pictureBoxScreenshot.Size = new System.Drawing.Size(1067, 483);
+            this.pictureBoxScreenshot.Size = new System.Drawing.Size(800, 392);
             this.pictureBoxScreenshot.TabIndex = 4;
             this.pictureBoxScreenshot.TabStop = false;
             // 
@@ -112,46 +111,70 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.panelTop.Controls.Add(this.groupBoxClient);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1067, 71);
+            this.panelTop.Size = new System.Drawing.Size(800, 58);
             this.panelTop.TabIndex = 5;
             // 
             // groupBoxServer
             // 
             this.groupBoxServer.Controls.Add(this.buttonListen);
-            this.groupBoxServer.Location = new System.Drawing.Point(395, 4);
-            this.groupBoxServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxServer.Location = new System.Drawing.Point(621, 3);
             this.groupBoxServer.Name = "groupBoxServer";
-            this.groupBoxServer.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxServer.Size = new System.Drawing.Size(124, 60);
+            this.groupBoxServer.Size = new System.Drawing.Size(93, 49);
             this.groupBoxServer.TabIndex = 7;
             this.groupBoxServer.TabStop = false;
             this.groupBoxServer.Text = "Server";
             // 
             // groupBoxClient
             // 
+            this.groupBoxClient.Controls.Add(this.pbGetScreens);
+            this.groupBoxClient.Controls.Add(this.cmbScreenList);
             this.groupBoxClient.Controls.Add(this.dfTarget);
             this.groupBoxClient.Controls.Add(this.label1);
             this.groupBoxClient.Controls.Add(this.pbGet);
-            this.groupBoxClient.Location = new System.Drawing.Point(4, 4);
-            this.groupBoxClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxClient.Location = new System.Drawing.Point(3, 3);
             this.groupBoxClient.Name = "groupBoxClient";
-            this.groupBoxClient.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBoxClient.Size = new System.Drawing.Size(325, 60);
+            this.groupBoxClient.Size = new System.Drawing.Size(534, 49);
             this.groupBoxClient.TabIndex = 6;
             this.groupBoxClient.TabStop = false;
             this.groupBoxClient.Text = "Client";
             // 
+            // pbGetScreens
+            // 
+            this.pbGetScreens.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
+            this.pbGetScreens.Location = new System.Drawing.Point(272, 17);
+            this.pbGetScreens.Name = "pbGetScreens";
+            this.pbGetScreens.Size = new System.Drawing.Size(75, 23);
+            this.pbGetScreens.TabIndex = 3;
+            this.pbGetScreens.Text = "Get screens";
+            this.pbGetScreens.UseVisualStyleBackColor = true;
+            this.pbGetScreens.Click += new System.EventHandler(this.pbGetScreens_Click);
+            // 
+            // cmbScreenList
+            // 
+            this.cmbScreenList.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.bindingSourceViewModel, "SendEnabled", true));
+            this.cmbScreenList.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bindingSourceViewModel, "ScreenInformationEditValue", true));
+            this.cmbScreenList.DataSource = this.screenInformationListBindingSource;
+            this.cmbScreenList.DisplayMember = "Name";
+            this.cmbScreenList.FormattingEnabled = true;
+            this.cmbScreenList.Location = new System.Drawing.Point(353, 18);
+            this.cmbScreenList.Name = "cmbScreenList";
+            this.cmbScreenList.Size = new System.Drawing.Size(175, 21);
+            this.cmbScreenList.TabIndex = 4;
+            // 
+            // screenInformationListBindingSource
+            // 
+            this.screenInformationListBindingSource.DataMember = "ScreenInformationList";
+            this.screenInformationListBindingSource.DataSource = this.bindingSourceViewModel;
+            // 
             // GimmeAScreenshotPleaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBoxScreenshot);
             this.Controls.Add(this.panelTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GimmeAScreenshotPleaseForm";
             this.Text = "GimmeAScreenshotPlease";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).EndInit();
@@ -160,6 +183,7 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.groupBoxServer.ResumeLayout(false);
             this.groupBoxClient.ResumeLayout(false);
             this.groupBoxClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.screenInformationListBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,6 +199,9 @@ namespace UI.GimmeAScreenshotPleaseUI
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.GroupBox groupBoxClient;
         private System.Windows.Forms.GroupBox groupBoxServer;
+        private System.Windows.Forms.Button pbGetScreens;
+        private System.Windows.Forms.ComboBox cmbScreenList;
+        private System.Windows.Forms.BindingSource screenInformationListBindingSource;
     }
 }
 

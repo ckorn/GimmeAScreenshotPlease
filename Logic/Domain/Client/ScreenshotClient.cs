@@ -1,6 +1,8 @@
-﻿using Logic.Foundation.Client.Contract;
+﻿using CrossCutting.DataClasses;
+using Logic.Foundation.Client.Contract;
 using Logic.Foundation.Encodings.Contract;
 using Logic.Foundation.Io.Contract;
+using Logic.Foundation.Serialization.Contract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,16 +17,49 @@ namespace Logic.Foundation.Client
     {
         private readonly ISender sender;
         private readonly IBinaryDecoder binaryDecoder;
-        public ScreenshotClient(ISender sender, IBinaryDecoder binaryDecoder)
+        private readonly ISerializer serializer;
+        private readonly IDeserializer deserializer;
+
+        public ScreenshotClient(ISender sender, IBinaryDecoder binaryDecoder,
+            ISerializer serializer, IDeserializer deserializer)
         {
             this.sender = sender;
             this.binaryDecoder = binaryDecoder;
+            this.serializer = serializer;
+            this.deserializer = deserializer;
         }
 
-        public Bitmap GetScreenshot(string target, string name)
+        public IReadOnlyList<ScreenInformation> GetScreenInformationList(string target)
         {
-            string result = this.sender.Send(target, name, "GimmeAScreenshotPlease");
-            byte[] arr = this.binaryDecoder.DecodePlainText(result);
+            string result = this.sender.Send(target,
+                ConnectionSettings.ScreenListPipeName,
+                "GimmeAScreenshotPlease");
+            List<ScreenInformation> screenInformationList
+                = this.deserializer.Deserialize<List<ScreenInformation>>(result);
+            return screenInformationList;
+        }
+
+        public Bitmap GetScreenshot(string target)
+        {
+            string result = this.sender.Send(target,
+                ConnectionSettings.PrimaryScreenPipeName,
+                "GimmeAScreenshotPlease");
+            Bitmap bitmap = GetBitmapFromResponse(result);
+            return bitmap;
+        }
+
+        public Bitmap GetScreenshot(string target, ScreenInformation screenInformation)
+        {
+            string text = this.serializer.Serialize(screenInformation);
+            string result = this.sender.Send(target,
+                ConnectionSettings.ScreenPipeName, text);
+            Bitmap bitmap = GetBitmapFromResponse(result);
+            return bitmap;
+        }
+
+        private Bitmap GetBitmapFromResponse(string response) 
+        {
+            byte[] arr = this.binaryDecoder.DecodePlainText(response);
             MemoryStream ms = new MemoryStream(arr);
             Bitmap bitmap = new Bitmap(ms);
 
