@@ -16,28 +16,32 @@ namespace Logic.Foundation.Server
     {
         private readonly IScreenshot screenshot;
         private readonly IReceiver receiver;
+        private readonly IResize resize;
 
         public event EventHandler<Bitmap> ScreenshotSent;
 
-        public ScreenshotServer(IScreenshot screenshot, IReceiver receiver)
+        public ScreenshotServer(IScreenshot screenshot, IReceiver receiver, IResize resize)
         {
             this.screenshot = screenshot;
             this.receiver = receiver;
+            this.resize = resize;
         }
 
-        public void Start(string name)
+        public void Start(string name, int maxWidth, int maxHeight)
         {
             string Send(string text) 
             {
-                Bitmap bitmap = this.screenshot.GetFullScreen();
-                ScreenshotSent?.Invoke(this, bitmap);
-                using (MemoryStream ms = new MemoryStream())
+                using (Bitmap bitmap = this.screenshot.GetFullScreen()) 
                 {
-                    using (Bitmap newImage = new Bitmap(bitmap))
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        newImage.Save(ms, ImageFormat.Jpeg);
-                        string base64 = Convert.ToBase64String(ms.GetBuffer());
-                        return base64;
+                        using (Bitmap newImage = this.resize.ResizeImage(bitmap, maxWidth, maxHeight))
+                        {
+                            ScreenshotSent?.Invoke(this, new Bitmap(newImage));
+                            newImage.Save(ms, ImageFormat.Jpeg);
+                            string base64 = Convert.ToBase64String(ms.GetBuffer());
+                            return base64;
+                        }
                     }
                 }
             }

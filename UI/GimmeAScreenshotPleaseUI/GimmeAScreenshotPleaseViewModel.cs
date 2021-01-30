@@ -37,7 +37,7 @@ namespace UI.GimmeAScreenshotPleaseUI
         public GimmeAScreenshotPleaseViewModel()
         {
             this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender()));
-            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver()));
+            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
         }
 
