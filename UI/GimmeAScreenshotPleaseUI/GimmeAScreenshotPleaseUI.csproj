@@ -118,6 +118,14 @@
       <Project>{e8f7e386-0f92-4b72-97cf-3a35fdbda7db}</Project>
       <Name>Server</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Encodings.Contract\Encodings.Contract.csproj">
+      <Project>{4a594eba-482e-4a2d-8ce0-7aec059615ea}</Project>
+      <Name>Encodings.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logic\Foundation\Encodings\Encodings.csproj">
+      <Project>{a0865541-5e27-4177-95b4-c2ddc9abdea7}</Project>
+      <Name>Encodings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Logic\Foundation\Graphics.Contract\Graphics.Contract.csproj">
       <Project>{3f40dff0-2fd5-4675-b6c0-568515f64ad8}</Project>
       <Name>Graphics.Contract</Name>

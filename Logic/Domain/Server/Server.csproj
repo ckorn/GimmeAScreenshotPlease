@@ -46,6 +46,10 @@
     <Compile Include="ScreenshotServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Encodings.Contract\Encodings.Contract.csproj">
+      <Project>{4a594eba-482e-4a2d-8ce0-7aec059615ea}</Project>
+      <Name>Encodings.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Foundation\Graphics.Contract\Graphics.Contract.csproj">
       <Project>{3f40dff0-2fd5-4675-b6c0-568515f64ad8}</Project>
       <Name>Graphics.Contract</Name>

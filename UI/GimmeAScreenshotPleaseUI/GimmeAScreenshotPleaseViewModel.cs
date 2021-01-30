@@ -3,6 +3,7 @@ using Logic.Business.ScreenshotClientWorkflow.Contract;
 using Logic.Business.ScreenshotServerWorkflow;
 using Logic.Business.ScreenshotServerWorkflow.Contract;
 using Logic.Foundation.Client;
+using Logic.Foundation.Encodings;
 using Logic.Foundation.Graphics;
 using Logic.Foundation.Io;
 using Logic.Foundation.Server;
@@ -38,8 +39,10 @@ namespace UI.GimmeAScreenshotPleaseUI
 
         public GimmeAScreenshotPleaseViewModel()
         {
-            this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender()));
-            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize()));
+            this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender(),
+                new BinaryDecoder()));
+            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize(),
+                new BinaryEncoder()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
 
             this.Target = Properties.Settings.Default.Target;

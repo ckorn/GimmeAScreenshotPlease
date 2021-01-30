@@ -1,4 +1,5 @@
-﻿using Logic.Foundation.Graphics.Contract;
+﻿using Logic.Foundation.Encodings.Contract;
+using Logic.Foundation.Graphics.Contract;
 using Logic.Foundation.Io.Contract;
 using Logic.Foundation.Server.Contract;
 using System;
@@ -17,14 +18,17 @@ namespace Logic.Foundation.Server
         private readonly IScreenshot screenshot;
         private readonly IReceiver receiver;
         private readonly IResize resize;
+        private readonly IBinaryEncoder binaryEncoder;
 
         public event EventHandler<Bitmap> ScreenshotSent;
 
-        public ScreenshotServer(IScreenshot screenshot, IReceiver receiver, IResize resize)
+        public ScreenshotServer(IScreenshot screenshot, IReceiver receiver, IResize resize,
+            IBinaryEncoder binaryEncoder)
         {
             this.screenshot = screenshot;
             this.receiver = receiver;
             this.resize = resize;
+            this.binaryEncoder = binaryEncoder;
         }
 
         public void Start(string name, int maxWidth, int maxHeight)
@@ -39,7 +43,7 @@ namespace Logic.Foundation.Server
                         {
                             ScreenshotSent?.Invoke(this, new Bitmap(newImage));
                             newImage.Save(ms, ImageFormat.Jpeg);
-                            string base64 = Convert.ToBase64String(ms.GetBuffer());
+                            string base64 = this.binaryEncoder.GetAsPlainText(ms.GetBuffer());
                             return base64;
                         }
                     }
