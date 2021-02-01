@@ -91,16 +91,32 @@ namespace UI.GimmeAScreenshotPleaseUI
             });
         }
 
-        public void GetScreenShot() 
+        public void GetScreenShot()
         {
-            if ((ScreenInformationEditValue?.Index ?? -1) >= 0)
+            this.SendEnabled = false;
+            Task.Factory.StartNew(() =>
             {
-                this.Screenshot = this.clientWorkflow.GetScreenshotForScreen(this.Target, this.ScreenInformationEditValue);
-            }
-            else
-            {
-                this.Screenshot = this.clientWorkflow.GetScreenshotPrimaryScreen(this.Target);
-            }
+                if ((ScreenInformationEditValue?.Index ?? -1) >= 0)
+                {
+                    return this.clientWorkflow.GetScreenshotForScreen(this.Target, this.ScreenInformationEditValue);
+                }
+                else
+                {
+                    return this.clientWorkflow.GetScreenshotPrimaryScreen(this.Target);
+                }
+            }).ContinueWith(task =>
+             {
+                 this.SendEnabled = true;
+                 if (task.Exception == null)
+                 {
+                     this.Screenshot = task.Result;
+                 }
+                 else
+                 {
+                     MessageBox.Show(task.Exception.Message);
+                 }
+             }, TaskScheduler.FromCurrentSynchronizationContext());
+
         }
 
         public void GetScreenList()
