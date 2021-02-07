@@ -6,7 +6,7 @@ using Logic.Business.ScreenshotServerWorkflow.Contract;
 using Logic.Foundation.Client;
 using Logic.Foundation.Encodings;
 using Logic.Foundation.Graphics;
-using Logic.Foundation.Io;
+using Logic.Foundation.IoHttp;
 using Logic.Foundation.Serialization;
 using Logic.Foundation.Server;
 using System;
@@ -45,9 +45,9 @@ namespace UI.GimmeAScreenshotPleaseUI
 
         public GimmeAScreenshotPleaseViewModel()
         {
-            this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new NamedPipeSender(),
+            this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
                 new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
-            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new NamedPipeReceiver(), new Resize(),
+            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new HttpReceiver(new HttpServer()), new Resize(),
                 new BinaryEncoder(), new JsonSerializer(), new JsonDeserializer()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
 
