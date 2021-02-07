@@ -36,7 +36,7 @@ namespace Logic.Foundation.IoHttp
             //}
             lock (prefixCallbackDictionary)
             {
-                this.httpListener.Prefixes.Add($"http://lore:{Port}/{name}/");
+                this.httpListener.Prefixes.Add($"http://*:{Port}/{name}/");
                 prefixCallbackDictionary[name] = onReceive;
                 StartListen(); 
             }
