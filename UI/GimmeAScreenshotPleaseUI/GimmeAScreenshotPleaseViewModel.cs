@@ -98,11 +98,11 @@ namespace UI.GimmeAScreenshotPleaseUI
             {
                 if ((ScreenInformationEditValue?.Index ?? -1) >= 0)
                 {
-                    return this.clientWorkflow.GetScreenshotForScreen(this.Target, this.ScreenInformationEditValue);
+                    return Task.Run(async () => await this.clientWorkflow.GetScreenshotForScreenAsync(this.Target, this.ScreenInformationEditValue)).Result;
                 }
                 else
                 {
-                    return this.clientWorkflow.GetScreenshotPrimaryScreen(this.Target);
+                    return Task.Run(async () => await this.clientWorkflow.GetScreenshotPrimaryScreenAsync(this.Target)).Result;
                 }
             }).ContinueWith(task =>
              {
@@ -121,7 +121,7 @@ namespace UI.GimmeAScreenshotPleaseUI
 
         public void GetScreenList()
         {
-            IReadOnlyList<ScreenInformation> screenInformationList = this.clientWorkflow.GetScreenInformationList(this.Target);
+            IReadOnlyList<ScreenInformation> screenInformationList = Task.Run(async () => await this.clientWorkflow.GetScreenInformationListAsync(this.Target)).Result;
             this.ScreenInformationList.Clear();
             this.ScreenInformationList.Add(new ScreenInformation(-1, string.Empty, 0, 0, 0, 0));
             foreach (ScreenInformation screenInformation in screenInformationList)

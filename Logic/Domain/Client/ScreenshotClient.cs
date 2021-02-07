@@ -29,9 +29,9 @@ namespace Logic.Domain.Client
             this.deserializer = deserializer;
         }
 
-        public IReadOnlyList<ScreenInformation> GetScreenInformationList(string target)
+        public async Task<IReadOnlyList<ScreenInformation>> GetScreenInformationListAsync(string target)
         {
-            string result = this.sender.Send(target,
+            string result = await this.sender.SendAsync(target,
                 ConnectionSettings.ScreenListPipeName,
                 "GimmeAScreenshotPlease");
             List<ScreenInformation> screenInformationList
@@ -53,29 +53,16 @@ namespace Logic.Domain.Client
             return result;
         }
 
-        public string GetScreenshotAsBase64(string target)
-            => this.sender.Send(target, ConnectionSettings.PrimaryScreenPipeName,
-                "GimmeAScreenshotPlease");
-
-        public string GetScreenshotAsBase64(string target,
-            ScreenInformation screenInformation)
+        public async Task<Bitmap> GetScreenshotAsync(string target)
         {
-            string text = this.serializer.Serialize(screenInformation);
-            string result = this.sender.Send(target,
-                ConnectionSettings.ScreenPipeName, text);
-            return result;
-        }
-
-        public Bitmap GetScreenshot(string target)
-        {
-            string result = GetScreenshotAsBase64(target);
+            string result = await GetScreenshotAsBase64Async(target);
             Bitmap bitmap = GetBitmapFromResponse(result);
             return bitmap;
         }
 
-        public Bitmap GetScreenshot(string target, ScreenInformation screenInformation)
+        public async Task<Bitmap> GetScreenshotAsync(string target, ScreenInformation screenInformation)
         {
-            string result = GetScreenshotAsBase64(target, screenInformation);
+            string result = await GetScreenshotAsBase64Async(target, screenInformation);
             Bitmap bitmap = GetBitmapFromResponse(result);
             return bitmap;
         }

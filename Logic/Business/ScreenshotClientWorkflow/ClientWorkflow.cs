@@ -19,19 +19,19 @@ namespace Logic.Business.ScreenshotClientWorkflow
             this.client = client;
         }
 
-        public Bitmap GetScreenshotPrimaryScreen(string target)
+        public async Task<Bitmap> GetScreenshotPrimaryScreenAsync(string target)
         {
-            return this.client.GetScreenshot(target);
+            return await this.client.GetScreenshotAsync(target);
         }
 
-        public Bitmap GetScreenshotForScreen(string target, ScreenInformation screenInformation)
+        public async Task<Bitmap> GetScreenshotForScreenAsync(string target, ScreenInformation screenInformation)
         {
-            return this.client.GetScreenshot(target, screenInformation);
+            return await this.client.GetScreenshotAsync(target, screenInformation);
         }
 
-        public IReadOnlyList<ScreenInformation> GetScreenInformationList(string target)
+        public async Task<IReadOnlyList<ScreenInformation>> GetScreenInformationListAsync(string target)
         {
-            return this.client.GetScreenInformationList(target);
+            return await this.client.GetScreenInformationListAsync(target);
         }
 
         public Task<string> GetScreenshotPrimaryScreenAsBase64Async(string target)

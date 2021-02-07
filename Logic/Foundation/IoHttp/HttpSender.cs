@@ -11,11 +11,6 @@ namespace Logic.Foundation.IoHttp
 {
     public class HttpSender : ISender
     {
-        public string Send(string target, string name, string text)
-        {
-            return Task.Run(async () => await SendAsync(target, name, text)).Result;
-        }
-
         public async Task<string> SendAsync(string target, string name, string text)
         {
             using (HttpClient httpClient = new HttpClient())
