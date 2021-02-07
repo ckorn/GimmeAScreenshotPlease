@@ -1,71 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{799DD5A5-9FDE-4CD7-B0F0-B09EDC493F77}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>net5.0;net472</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>Logic.Foundation.Client</RootNamespace>
-    <AssemblyName>Client</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenshotClient.cs" />
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\..\Foundation\Encodings.Contract\Encodings.Contract.csproj" />
+    <ProjectReference Include="..\..\Foundation\Io.Contract\Io.Contract.csproj" />
+    <ProjectReference Include="..\..\Foundation\Serialization.Contract\Serialization.Contract.csproj" />
+    <ProjectReference Include="..\Client.Contract\Client.Contract.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
-      <Project>{22FEE8C4-3711-45E8-8085-02754E1EB77F}</Project>
-      <Name>DataClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Foundation\Encodings.Contract\Encodings.Contract.csproj">
-      <Project>{4a594eba-482e-4a2d-8ce0-7aec059615ea}</Project>
-      <Name>Encodings.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Foundation\Io.Contract\Io.Contract.csproj">
-      <Project>{67d18de8-9eb0-4746-a3ea-ec1bc9e433b7}</Project>
-      <Name>Io.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Foundation\Serialization.Contract\Serialization.Contract.csproj">
-      <Project>{e428141b-971f-495e-bf23-277433eb8e32}</Project>
-      <Name>Serialization.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Client.Contract\Client.Contract.csproj">
-      <Project>{f7ec64a7-f348-41f7-ab6d-6efb6f2054c0}</Project>
-      <Name>Client.Contract</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
