@@ -44,6 +44,7 @@ namespace Logic.Foundation.IoHttp
             {
                 HttpListenerContext context = this.httpListener.GetContext();
                 string prefix = context.Request.Url.Segments.Last();
+                prefix = prefix.Substring(0, prefix.Length - 1);
                 Stream body = context.Request.InputStream;
                 Encoding encoding = context.Request.ContentEncoding;
                 StreamReader reader = new StreamReader(body, encoding);
