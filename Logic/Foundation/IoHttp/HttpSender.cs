@@ -17,13 +17,13 @@ namespace Logic.Foundation.IoHttp
             {
                 MemoryStream memoryStream = new MemoryStream();
                 StreamWriter request = new StreamWriter(memoryStream);
-                StreamContent content = new StreamContent(memoryStream);
                 request.Write(text);
                 request.Flush();
+                memoryStream.Position = 0;
+                StreamContent content = new StreamContent(memoryStream);
 
                 HttpResponseMessage resp = null;
                 Task.Run(async () => resp = await httpClient.PostAsync($"http://{target}:{HttpServer.Port}/{name}/", content)).Wait();
-                request.Close();
 
                 if (resp.IsSuccessStatusCode)
                 {
