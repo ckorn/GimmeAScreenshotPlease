@@ -1,0 +1,103 @@
+﻿@page "/client"
+@inject ILocalStorageService localStorage
+
+<h1>Client</h1>
+
+<p>Target: <input name="target" @bind="target" /></p>
+<p>
+    <button class="btn btn-primary" @onclick="@(async () => await GetScreensAsync())">Get screens</button>
+    <select @bind="screenInformationIndex">
+        @if (screenInformationList != null)
+        {
+            @foreach (ScreenInformation screenInformation in screenInformationList)
+            {
+                <option value="@screenInformation.Index">@screenInformation.Name</option>
+            }
+        }
+    </select>
+</p>
+<p><button class="btn btn-primary" @onclick="@(async () => await GetAsync())">Get</button></p>
+
+<p><img hidden="@imageDataHidden" src="@imageData" /></p>
+
+@if (screenInformationList != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Width</th>
+                <th>Height</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ScreenInformation screenInformation in screenInformationList)
+            {
+                <tr>
+                    <td>@screenInformation.Index</td>
+                    <td>@screenInformation.Name</td>
+                    <td>@screenInformation.Width</td>
+                    <td>@screenInformation.Height</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string target = "";
+    private string imageData = "";
+    private bool imageDataHidden = true;
+    private IClientWorkflow clientWorkflow;
+    private IReadOnlyList<ScreenInformation> screenInformationList = null;
+    private int? screenInformationIndex = null;
+
+    protected override Task OnInitializedAsync()
+    {
+        clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
+            new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await GetTargetFromLocalStorage();
+            StateHasChanged();
+        }
+    }
+
+    private async Task GetAsync()
+    {
+        string base64 = "";
+        if (screenInformationIndex == null)
+        {
+            base64 = await this.clientWorkflow.GetScreenshotPrimaryScreenAsBase64Async(this.target);
+        }
+        else
+        {
+            ScreenInformation screenInformation = this.screenInformationList.Single(x => x.Index == screenInformationIndex.Value);
+            base64 = await this.clientWorkflow.GetScreenshotForScreenAsBase64Async(this.target, screenInformation);
+        }
+        this.imageData = (!string.IsNullOrEmpty(base64)) ? $"data:image/jpeg;base64,{base64}" : string.Empty;
+        this.imageDataHidden = string.IsNullOrEmpty(base64);
+        await SaveTarget();
+    }
+
+    private async Task GetScreensAsync()
+    {
+        screenInformationList = await this.clientWorkflow.GetScreenInformationListAsync(this.target);
+    }
+
+    private async Task SaveTarget()
+    {
+        await localStorage.SetItemAsync("target", this.target);
+    }
+
+    private async Task GetTargetFromLocalStorage()
+    {
+        this.target = await localStorage.GetItemAsync<string>("target");
+    }
+}

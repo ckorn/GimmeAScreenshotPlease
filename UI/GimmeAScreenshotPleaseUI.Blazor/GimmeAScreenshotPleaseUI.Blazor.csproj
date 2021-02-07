@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>UI.GimmeAScreenshotPleaseUI.Blazor</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj" />
+    <ProjectReference Include="..\..\Logic\Domain\Client.Contract\Client.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Domain\Client\Client.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Encodings.Contract\Encodings.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Encodings\Encodings.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Io.Contract\Io.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\IoHttp\IoHttp.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Serialization\Serialization.csproj" />
+  </ItemGroup>
+
+</Project>

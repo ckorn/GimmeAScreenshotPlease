@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimmeAScreenshotPleaseUI", "UI\GimmeAScreenshotPleaseUI\GimmeAScreenshotPleaseUI.csproj", "{B31177D5-327E-4D98-8F4D-AF9F618FF75F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GimmeAScreenshotPleaseUI", "UI\GimmeAScreenshotPleaseUI\GimmeAScreenshotPleaseUI.csproj", "{B31177D5-327E-4D98-8F4D-AF9F618FF75F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{8F330855-6F62-433A-81A8-AB7167FF1B47}"
 EndProject
@@ -15,43 +15,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{388DB485-0CD5-4232-BA0A-D5EC295D8AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Io", "Logic\Foundation\Io\Io.csproj", "{45E3CF2D-41EE-408D-B44D-2F27A79AA826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io", "Logic\Foundation\Io\Io.csproj", "{45E3CF2D-41EE-408D-B44D-2F27A79AA826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Io.Contract", "Logic\Foundation\Io.Contract\Io.Contract.csproj", "{67D18DE8-9EB0-4746-A3EA-EC1BC9E433B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Contract", "Logic\Foundation\Io.Contract\Io.Contract.csproj", "{67D18DE8-9EB0-4746-A3EA-EC1BC9E433B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics", "Logic\Foundation\Graphics\Graphics.csproj", "{84204418-9F53-4A49-BBF3-858FC2CF372C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphics", "Logic\Foundation\Graphics\Graphics.csproj", "{84204418-9F53-4A49-BBF3-858FC2CF372C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics.Contract", "Logic\Foundation\Graphics.Contract\Graphics.Contract.csproj", "{3F40DFF0-2FD5-4675-B6C0-568515F64AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphics.Contract", "Logic\Foundation\Graphics.Contract\Graphics.Contract.csproj", "{3F40DFF0-2FD5-4675-B6C0-568515F64AD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Logic\Domain\Client\Client.csproj", "{799DD5A5-9FDE-4CD7-B0F0-B09EDC493F77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Logic\Domain\Client\Client.csproj", "{799DD5A5-9FDE-4CD7-B0F0-B09EDC493F77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Contract", "Logic\Domain\Client.Contract\Client.Contract.csproj", "{F7EC64A7-F348-41F7-AB6D-6EFB6F2054C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Contract", "Logic\Domain\Client.Contract\Client.Contract.csproj", "{F7EC64A7-F348-41F7-AB6D-6EFB6F2054C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Logic\Domain\Server\Server.csproj", "{E8F7E386-0F92-4B72-97CF-3A35FDBDA7DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Logic\Domain\Server\Server.csproj", "{E8F7E386-0F92-4B72-97CF-3A35FDBDA7DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Contract", "Logic\Domain\Server.Contract\Server.Contract.csproj", "{95553F46-8FA3-4126-926A-BE11FE8B4285}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server.Contract", "Logic\Domain\Server.Contract\Server.Contract.csproj", "{95553F46-8FA3-4126-926A-BE11FE8B4285}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotServerWorkflow", "Logic\Business\ScreenshotServerWorkflow\ScreenshotServerWorkflow.csproj", "{CADF6AF6-B313-4EB0-8E83-706391E122C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenshotServerWorkflow", "Logic\Business\ScreenshotServerWorkflow\ScreenshotServerWorkflow.csproj", "{CADF6AF6-B313-4EB0-8E83-706391E122C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotServerWorkflow.Contract", "Logic\Business\ScreenshotServerWorkflow.Contract\ScreenshotServerWorkflow.Contract.csproj", "{1EA51A89-33DF-4629-B567-34C87564E6D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenshotServerWorkflow.Contract", "Logic\Business\ScreenshotServerWorkflow.Contract\ScreenshotServerWorkflow.Contract.csproj", "{1EA51A89-33DF-4629-B567-34C87564E6D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotClientWorkflow", "Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj", "{95DCB48A-2272-41A8-891A-9B7626031851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenshotClientWorkflow", "Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj", "{95DCB48A-2272-41A8-891A-9B7626031851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotClientWorkflow.Contract", "Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj", "{09A8C334-E806-4777-9AED-B43257E27F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenshotClientWorkflow.Contract", "Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj", "{09A8C334-E806-4777-9AED-B43257E27F56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{184D9DA9-1150-4646-976E-45E5193AD28A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClasses", "CrossCutting\DataClasses\DataClasses.csproj", "{22FEE8C4-3711-45E8-8085-02754E1EB77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClasses", "CrossCutting\DataClasses\DataClasses.csproj", "{22FEE8C4-3711-45E8-8085-02754E1EB77F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encodings.Contract", "Logic\Foundation\Encodings.Contract\Encodings.Contract.csproj", "{4A594EBA-482E-4A2D-8CE0-7AEC059615EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encodings.Contract", "Logic\Foundation\Encodings.Contract\Encodings.Contract.csproj", "{4A594EBA-482E-4A2D-8CE0-7AEC059615EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encodings", "Logic\Foundation\Encodings\Encodings.csproj", "{A0865541-5E27-4177-95B4-C2DDC9ABDEA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encodings", "Logic\Foundation\Encodings\Encodings.csproj", "{A0865541-5E27-4177-95B4-C2DDC9ABDEA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "Logic\Foundation\Serialization\Serialization.csproj", "{6B38A64D-27B0-4F98-BA53-4204B4394C58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization", "Logic\Foundation\Serialization\Serialization.csproj", "{6B38A64D-27B0-4F98-BA53-4204B4394C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.Contract", "Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj", "{E428141B-971F-495E-BF23-277433EB8E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Contract", "Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj", "{E428141B-971F-495E-BF23-277433EB8E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoHttp", "Logic\Foundation\IoHttp\IoHttp.csproj", "{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoHttp", "Logic\Foundation\IoHttp\IoHttp.csproj", "{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimmeAScreenshotPleaseUI.Blazor", "UI\GimmeAScreenshotPleaseUI.Blazor\GimmeAScreenshotPleaseUI.Blazor.csproj", "{85886768-5854-4D1E-8360-531074DCEEA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85886768-5854-4D1E-8360-531074DCEEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85886768-5854-4D1E-8360-531074DCEEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85886768-5854-4D1E-8360-531074DCEEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85886768-5854-4D1E-8360-531074DCEEA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -162,6 +168,7 @@ Global
 		{6B38A64D-27B0-4F98-BA53-4204B4394C58} = {83982FCC-0016-417C-A1C5-39D069B5DAFC}
 		{E428141B-971F-495E-BF23-277433EB8E32} = {83982FCC-0016-417C-A1C5-39D069B5DAFC}
 		{B2B4DB67-65A1-4796-B4DC-BA5614B11B78} = {83982FCC-0016-417C-A1C5-39D069B5DAFC}
+		{85886768-5854-4D1E-8360-531074DCEEA9} = {388DB485-0CD5-4232-BA0A-D5EC295D8AE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B43E731-2B89-4F38-80F7-19D0917FFDAE}
