@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressBuilder.cs" />
     <Compile Include="HttpReceiver.cs" />
     <Compile Include="HttpSender.cs" />
     <Compile Include="HttpServer.cs" />
