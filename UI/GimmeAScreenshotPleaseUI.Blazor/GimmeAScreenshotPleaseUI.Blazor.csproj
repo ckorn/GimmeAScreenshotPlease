@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>UI.GimmeAScreenshotPleaseUI.Blazor</RootNamespace>
+    <UserSecretsId>766e05c2-4c52-4ca2-af3b-930ef9935c41</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

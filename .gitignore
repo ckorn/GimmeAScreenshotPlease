@@ -2,3 +2,8 @@
 bin
 obj
 packages
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+PublishProfiles

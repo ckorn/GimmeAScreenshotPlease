@@ -53,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Contract", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoHttp", "Logic\Foundation\IoHttp\IoHttp.csproj", "{B2B4DB67-65A1-4796-B4DC-BA5614B11B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimmeAScreenshotPleaseUI.Blazor", "UI\GimmeAScreenshotPleaseUI.Blazor\GimmeAScreenshotPleaseUI.Blazor.csproj", "{85886768-5854-4D1E-8360-531074DCEEA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GimmeAScreenshotPleaseUI.Blazor", "UI\GimmeAScreenshotPleaseUI.Blazor\GimmeAScreenshotPleaseUI.Blazor.csproj", "{85886768-5854-4D1E-8360-531074DCEEA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
