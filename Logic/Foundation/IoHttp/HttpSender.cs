@@ -13,6 +13,11 @@ namespace Logic.Foundation.IoHttp
     {
         public string Send(string target, string name, string text)
         {
+            return Task.Run(async () => await SendAsync(target, name, text)).Result;
+        }
+
+        public async Task<string> SendAsync(string target, string name, string text)
+        {
             using (HttpClient httpClient = new HttpClient())
             {
                 MemoryStream memoryStream = new MemoryStream();
@@ -23,15 +28,15 @@ namespace Logic.Foundation.IoHttp
                 StreamContent content = new StreamContent(memoryStream);
 
                 HttpResponseMessage resp = null;
-                Task.Run(async () => resp = await httpClient.PostAsync($"http://{target}:{HttpServer.Port}/{name}/", content)).Wait();
+                resp = await httpClient.PostAsync($"http://{target}:{HttpServer.Port}/{name}/", content);
 
                 if (resp.IsSuccessStatusCode)
                 {
                     string respons = "";
-                    Task.Run(async () => respons = await resp.Content.ReadAsStringAsync()).Wait();
+                    respons = await resp.Content.ReadAsStringAsync();
                     return respons;
                 }
-                return null;
+                throw new InvalidOperationException();
             }
         }
     }

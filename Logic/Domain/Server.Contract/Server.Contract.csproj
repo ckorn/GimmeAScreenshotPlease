@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <TargetFrameworks>net5.0;net472</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RootNamespace>Logic.Foundation.Server.Contract</RootNamespace>
+    <RootNamespace>Logic.Domain.Server.Contract</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

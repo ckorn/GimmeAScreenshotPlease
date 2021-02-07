@@ -3,7 +3,7 @@ using Logic.Foundation.Encodings.Contract;
 using Logic.Foundation.Graphics.Contract;
 using Logic.Foundation.Io.Contract;
 using Logic.Foundation.Serialization.Contract;
-using Logic.Foundation.Server.Contract;
+using Logic.Domain.Server.Contract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Foundation.Server
+namespace Logic.Domain.Server
 {
     public class ScreenshotServer : IScreenshotServer
     {

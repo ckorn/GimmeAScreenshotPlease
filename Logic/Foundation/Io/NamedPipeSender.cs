@@ -24,5 +24,10 @@ namespace Logic.Foundation.Io
 
             return reader.ReadLine();
         }
+
+        public Task<string> SendAsync(string target, string name, string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

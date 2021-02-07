@@ -1,5 +1,5 @@
 ﻿using Logic.Business.ScreenshotServerWorkflow.Contract;
-using Logic.Foundation.Server.Contract;
+using Logic.Domain.Server.Contract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

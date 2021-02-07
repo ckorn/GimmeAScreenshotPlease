@@ -1,5 +1,5 @@
 ﻿using CrossCutting.DataClasses;
-using Logic.Foundation.Client.Contract;
+using Logic.Domain.Client.Contract;
 using Logic.Foundation.Encodings.Contract;
 using Logic.Foundation.Io.Contract;
 using Logic.Foundation.Serialization.Contract;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Foundation.Client
+namespace Logic.Domain.Client
 {
     public class ScreenshotClient : IScreenshotClient
     {
@@ -39,20 +39,43 @@ namespace Logic.Foundation.Client
             return screenInformationList;
         }
 
+        public async Task<string> GetScreenshotAsBase64Async(string target)
+        {
+            return await this.sender.SendAsync(target, ConnectionSettings.PrimaryScreenPipeName,
+                "GimmeAScreenshotPlease");
+        }
+
+        public async Task<string> GetScreenshotAsBase64Async(string target, ScreenInformation screenInformation)
+        {
+            string text = this.serializer.Serialize(screenInformation);
+            string result = await this.sender.SendAsync(target,
+                ConnectionSettings.ScreenPipeName, text);
+            return result;
+        }
+
+        public string GetScreenshotAsBase64(string target)
+            => this.sender.Send(target, ConnectionSettings.PrimaryScreenPipeName,
+                "GimmeAScreenshotPlease");
+
+        public string GetScreenshotAsBase64(string target,
+            ScreenInformation screenInformation)
+        {
+            string text = this.serializer.Serialize(screenInformation);
+            string result = this.sender.Send(target,
+                ConnectionSettings.ScreenPipeName, text);
+            return result;
+        }
+
         public Bitmap GetScreenshot(string target)
         {
-            string result = this.sender.Send(target,
-                ConnectionSettings.PrimaryScreenPipeName,
-                "GimmeAScreenshotPlease");
+            string result = GetScreenshotAsBase64(target);
             Bitmap bitmap = GetBitmapFromResponse(result);
             return bitmap;
         }
 
         public Bitmap GetScreenshot(string target, ScreenInformation screenInformation)
         {
-            string text = this.serializer.Serialize(screenInformation);
-            string result = this.sender.Send(target,
-                ConnectionSettings.ScreenPipeName, text);
+            string result = GetScreenshotAsBase64(target, screenInformation);
             Bitmap bitmap = GetBitmapFromResponse(result);
             return bitmap;
         }

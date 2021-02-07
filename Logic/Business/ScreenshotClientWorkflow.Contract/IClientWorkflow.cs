@@ -12,6 +12,8 @@ namespace Logic.Business.ScreenshotClientWorkflow.Contract
     {
         Bitmap GetScreenshotPrimaryScreen(string target);
         Bitmap GetScreenshotForScreen(string target, ScreenInformation screenInformation);
+        Task<string> GetScreenshotPrimaryScreenAsBase64Async(string target);
+        Task<string> GetScreenshotForScreenAsBase64Async(string target, ScreenInformation screenInformation);
         IReadOnlyList<ScreenInformation> GetScreenInformationList(string target);
     }
 }

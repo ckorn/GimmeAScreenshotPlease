@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Foundation.Server.Contract
+namespace Logic.Domain.Server.Contract
 {
     public interface IScreenshotServer
     {
