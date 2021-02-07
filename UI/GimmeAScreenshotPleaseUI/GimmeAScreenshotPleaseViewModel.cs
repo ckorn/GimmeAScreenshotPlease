@@ -123,7 +123,7 @@ namespace UI.GimmeAScreenshotPleaseUI
         {
             IReadOnlyList<ScreenInformation> screenInformationList = this.clientWorkflow.GetScreenInformationList(this.Target);
             this.ScreenInformationList.Clear();
-            this.ScreenInformationList.Add(new ScreenInformation(-1, string.Empty));
+            this.ScreenInformationList.Add(new ScreenInformation(-1, string.Empty, 0, 0, 0, 0));
             foreach (ScreenInformation screenInformation in screenInformationList)
             {
                 this.ScreenInformationList.Add(screenInformation);

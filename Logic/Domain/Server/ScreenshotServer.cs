@@ -12,7 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Logic.Foundation.Server
 {
@@ -63,8 +62,7 @@ namespace Logic.Foundation.Server
         {
             string Send(string text)
             {
-                IReadOnlyList<Screen> screenList = this.screenshot.GetScreenList();
-                List<ScreenInformation> screenInformationList = screenList.Select((x, i) => new ScreenInformation(i, x.DeviceName)).ToList();
+                List<ScreenInformation> screenInformationList = this.screenshot.GetScreenList().ToList();
                 string returnValue = this.serializer.Serialize(screenInformationList);
                 return returnValue;
             }

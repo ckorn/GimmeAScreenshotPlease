@@ -1,18 +1,18 @@
-﻿using System;
+﻿using CrossCutting.DataClasses;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Logic.Foundation.Graphics.Contract
 {
     public interface IScreenshot
     {
-        IReadOnlyList<Screen> GetScreenList();
+        IReadOnlyList<ScreenInformation> GetScreenList();
         Bitmap GetPrimaryScreen();
-        Bitmap GetScreen(Screen screen);
+        Bitmap GetScreen(ScreenInformation screen);
         Bitmap GetScreen(int screenIndex);
     }
 }

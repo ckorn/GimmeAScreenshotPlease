@@ -48,6 +48,10 @@
     <Compile Include="Screenshot.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj">
+      <Project>{22fee8c4-3711-45e8-8085-02754e1eb77f}</Project>
+      <Name>DataClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Graphics.Contract\Graphics.Contract.csproj">
       <Project>{3f40dff0-2fd5-4675-b6c0-568515f64ad8}</Project>
       <Name>Graphics.Contract</Name>
