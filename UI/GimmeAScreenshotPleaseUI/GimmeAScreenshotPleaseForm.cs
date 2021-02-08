@@ -35,5 +35,10 @@ namespace UI.GimmeAScreenshotPleaseUI
         {
             this.viewModel.GetScreenList();
         }
+
+        private void buttonWriteConfig_Click(object sender, EventArgs e)
+        {
+            this.viewModel.WriteScreenSettings();
+        }
     }
 }

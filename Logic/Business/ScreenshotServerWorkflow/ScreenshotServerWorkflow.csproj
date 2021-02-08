@@ -14,6 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
     <ProjectReference Include="..\..\Domain\Server.Contract\Server.Contract.csproj" />
+    <ProjectReference Include="..\..\Foundation\Screen.Contract\Screen.Contract.csproj" />
+    <ProjectReference Include="..\..\Foundation\Serialization.Contract\Serialization.Contract.csproj" />
     <ProjectReference Include="..\ScreenshotServerWorkflow.Contract\ScreenshotServerWorkflow.Contract.csproj" />
   </ItemGroup>
 </Project>

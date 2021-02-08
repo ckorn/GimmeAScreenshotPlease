@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.GimmeAScreenshotPleaseUI.Properties;
+using System.Diagnostics;
 
 namespace UI.GimmeAScreenshotPleaseUI
 {
@@ -52,7 +53,8 @@ namespace UI.GimmeAScreenshotPleaseUI
                 new Screenshot(new Logic.Foundation.Screen.ScreenInformation()),
                 new ScreenshotConverter(new BinaryDecoder(), new BinaryEncoder(), new Resize()),
                 new HttpReceiver(new HttpServer()),
-                new JsonSerializer(), new JsonDeserializer(), new Logic.Foundation.Screen.ScreenInformation()));
+                new JsonSerializer(), new JsonDeserializer(), new Logic.Foundation.Screen.ScreenInformation()),
+                new Logic.Foundation.Screen.ScreenInformation(), new JsonSerializer());
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
 
             this.Target = Properties.Settings.Default.Target;
@@ -93,6 +95,12 @@ namespace UI.GimmeAScreenshotPleaseUI
             {
                 this.serverWorkflow.StartSendScreenList();
             });
+        }
+
+        public void WriteScreenSettings()
+        {
+            string file = this.serverWorkflow.WriteScreenSettings();
+            Process.Start(file);
         }
 
         public void GetScreenShot()

@@ -13,5 +13,6 @@ namespace Logic.Business.ScreenshotServerWorkflow.Contract
         void StartSendPrimaryScreen();
         void StartSendScreen();
         void StartSendScreenList();
+        string WriteScreenSettings();
     }
 }
