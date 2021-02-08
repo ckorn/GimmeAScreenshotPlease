@@ -46,9 +46,13 @@ namespace UI.GimmeAScreenshotPleaseUI
         public GimmeAScreenshotPleaseViewModel()
         {
             this.clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
-                new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
-            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(new Screenshot(), new HttpReceiver(new HttpServer()), new Resize(),
-                new BinaryEncoder(), new JsonSerializer(), new JsonDeserializer()));
+                new JsonSerializer(), new JsonDeserializer(),
+                new ScreenshotConverter(new BinaryDecoder(), new BinaryEncoder(), new Resize())));
+            this.serverWorkflow = new ServerWorkflow(new ScreenshotServer(
+                new Screenshot(new Logic.Foundation.Screen.ScreenInformation()),
+                new ScreenshotConverter(new BinaryDecoder(), new BinaryEncoder(), new Resize()),
+                new HttpReceiver(new HttpServer()),
+                new JsonSerializer(), new JsonDeserializer(), new Logic.Foundation.Screen.ScreenInformation()));
             this.serverWorkflow.ScreenshotSent += ServerWorkflow_ScreenshotSent;
 
             this.Target = Properties.Settings.Default.Target;

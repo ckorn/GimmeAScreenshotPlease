@@ -12,36 +12,41 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Foundation.Screen.Contract;
 
 namespace Logic.Domain.Server
 {
     public class ScreenshotServer : IScreenshotServer
     {
         private readonly IScreenshot screenshot;
+        private readonly IScreenshotConverter screenshotConverter;
         private readonly IReceiver receiver;
-        private readonly IResize resize;
-        private readonly IBinaryEncoder binaryEncoder;
         private readonly ISerializer serializer;
         private readonly IDeserializer deserializer;
+        private readonly IScreenInformation screenInformation;
 
-        public event EventHandler<Bitmap> ScreenshotSent;
-
-        public ScreenshotServer(IScreenshot screenshot, IReceiver receiver, IResize resize,
-            IBinaryEncoder binaryEncoder, ISerializer serializer, IDeserializer deserializer)
+        public ScreenshotServer(IScreenshot screenshot, IScreenshotConverter screenshotConverter,
+            IReceiver receiver, ISerializer serializer, IDeserializer deserializer, IScreenInformation screenInformation)
         {
             this.screenshot = screenshot;
             this.receiver = receiver;
-            this.resize = resize;
-            this.binaryEncoder = binaryEncoder;
             this.serializer = serializer;
             this.deserializer = deserializer;
+            this.screenInformation = screenInformation;
+            this.screenshotConverter = screenshotConverter;
         }
+
+        public event EventHandler<Bitmap> ScreenshotSent;
+
+
 
         public void StartSendPrimaryScreen(int maxWidth, int maxHeight)
         {
-            string Send(string text) 
+            string Send(string text)
             {
-                string base64 = GetScreenshotAsText(this.screenshot.GetPrimaryScreen(), maxWidth, maxHeight);
+                Bitmap bitmap = this.screenshot.GetPrimaryScreen();
+                string base64 = this.screenshotConverter.GetScreenshotAsBase64(bitmap, maxWidth, maxHeight);
+                ScreenshotSent?.Invoke(this, this.screenshotConverter.GetBitmapFromBase64(base64));
                 return base64;
             }
             this.receiver.Start(ConnectionSettings.PrimaryScreenPipeName, Send);
@@ -52,7 +57,9 @@ namespace Logic.Domain.Server
             string Send(string text)
             {
                 ScreenInformation screenInformation = this.deserializer.Deserialize<ScreenInformation>(text);
-                string base64 = GetScreenshotAsText(this.screenshot.GetScreen(screenInformation.Index), maxWidth, maxHeight);
+                Bitmap bitmap = this.screenshot.GetScreen(screenInformation.Index);
+                string base64 = this.screenshotConverter.GetScreenshotAsBase64(bitmap, maxWidth, maxHeight);
+                ScreenshotSent?.Invoke(this, this.screenshotConverter.GetBitmapFromBase64(base64));
                 return base64;
             }
             this.receiver.Start(ConnectionSettings.ScreenPipeName, Send);
@@ -62,28 +69,11 @@ namespace Logic.Domain.Server
         {
             string Send(string text)
             {
-                List<ScreenInformation> screenInformationList = this.screenshot.GetScreenList().ToList();
+                List<ScreenInformation> screenInformationList = this.screenInformation.GetScreenInformationList().ToList();
                 string returnValue = this.serializer.Serialize(screenInformationList);
                 return returnValue;
             }
             this.receiver.Start(ConnectionSettings.ScreenListPipeName, Send);
-        }
-
-        private string GetScreenshotAsText(Bitmap screenshot, int maxWidth, int maxHeight) 
-        {
-            using (Bitmap bitmap = screenshot)
-            {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (Bitmap newImage = this.resize.ResizeImage(bitmap, maxWidth, maxHeight))
-                    {
-                        ScreenshotSent?.Invoke(this, new Bitmap(newImage));
-                        newImage.Save(ms, ImageFormat.Jpeg);
-                        string base64 = this.binaryEncoder.GetAsPlainText(ms.GetBuffer());
-                        return base64;
-                    }
-                }
-            }
         }
     }
 }

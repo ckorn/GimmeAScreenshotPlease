@@ -28,6 +28,8 @@
     <ProjectReference Include="..\..\Logic\Foundation\Graphics\Graphics.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Io.Contract\Io.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\IoHttp\IoHttp.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Screen.Contract\Screen.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Screen\Screen.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Serialization\Serialization.csproj" />
   </ItemGroup>

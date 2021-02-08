@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Logic.Domain.ClientSettings</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\..\Foundation\Graphics.Contract\Graphics.Contract.csproj" />
+    <ProjectReference Include="..\..\Foundation\Screen.Contract\Screen.Contract.csproj" />
+    <ProjectReference Include="..\Client.Contract\Client.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

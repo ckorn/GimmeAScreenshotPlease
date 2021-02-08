@@ -1,6 +1,7 @@
 ﻿using CrossCutting.DataClasses;
 using Logic.Domain.Client.Contract;
 using Logic.Foundation.Encodings.Contract;
+using Logic.Foundation.Graphics.Contract;
 using Logic.Foundation.Io.Contract;
 using Logic.Foundation.Serialization.Contract;
 using System;
@@ -16,17 +17,17 @@ namespace Logic.Domain.Client
     public class ScreenshotClient : IScreenshotClient
     {
         private readonly ISender sender;
-        private readonly IBinaryDecoder binaryDecoder;
         private readonly ISerializer serializer;
         private readonly IDeserializer deserializer;
+        private readonly IScreenshotConverter screenshotConverter;
 
-        public ScreenshotClient(ISender sender, IBinaryDecoder binaryDecoder,
-            ISerializer serializer, IDeserializer deserializer)
+        public ScreenshotClient(ISender sender, ISerializer serializer, IDeserializer deserializer,
+            IScreenshotConverter screenshotConverter)
         {
             this.sender = sender;
-            this.binaryDecoder = binaryDecoder;
             this.serializer = serializer;
             this.deserializer = deserializer;
+            this.screenshotConverter = screenshotConverter;
         }
 
         public async Task<IReadOnlyList<ScreenInformation>> GetScreenInformationListAsync(string target)
@@ -56,23 +57,14 @@ namespace Logic.Domain.Client
         public async Task<Bitmap> GetScreenshotAsync(string target)
         {
             string result = await GetScreenshotAsBase64Async(target);
-            Bitmap bitmap = GetBitmapFromResponse(result);
+            Bitmap bitmap = this.screenshotConverter.GetBitmapFromBase64(result);
             return bitmap;
         }
 
         public async Task<Bitmap> GetScreenshotAsync(string target, ScreenInformation screenInformation)
         {
             string result = await GetScreenshotAsBase64Async(target, screenInformation);
-            Bitmap bitmap = GetBitmapFromResponse(result);
-            return bitmap;
-        }
-
-        private Bitmap GetBitmapFromResponse(string response) 
-        {
-            byte[] arr = this.binaryDecoder.DecodePlainText(response);
-            MemoryStream ms = new MemoryStream(arr);
-            Bitmap bitmap = new Bitmap(ms);
-
+            Bitmap bitmap = this.screenshotConverter.GetBitmapFromBase64(result);
             return bitmap;
         }
     }

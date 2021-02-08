@@ -16,11 +16,15 @@
     <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow.Contract\ScreenshotClientWorkflow.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Business\ScreenshotClientWorkflow\ScreenshotClientWorkflow.csproj" />
     <ProjectReference Include="..\..\Logic\Domain\Client.Contract\Client.Contract.csproj" />
-    <ProjectReference Include="..\..\Logic\Domain\Client\Client.csproj" />
+    <ProjectReference Include="..\..\Logic\Domain\ClientSettings\ClientSettings.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Encodings.Contract\Encodings.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Encodings\Encodings.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Graphics.Contract\Graphics.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Graphics\Graphics.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Io.Contract\Io.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\IoHttp\IoHttp.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\Screen.Contract\Screen.Contract.csproj" />
+    <ProjectReference Include="..\..\Logic\Foundation\ScreenSettings\ScreenSettings.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Serialization.Contract\Serialization.Contract.csproj" />
     <ProjectReference Include="..\..\Logic\Foundation\Serialization\Serialization.csproj" />
   </ItemGroup>

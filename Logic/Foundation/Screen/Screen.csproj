@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net5.0;net472</TargetFrameworks>
+    <TargetFramework>net472</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RootNamespace>Logic.Foundation.Graphics</RootNamespace>
+    <RootNamespace>Logic.Foundation.Screen</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
-    <ProjectReference Include="..\Graphics.Contract\Graphics.Contract.csproj" />
     <ProjectReference Include="..\Screen.Contract\Screen.Contract.csproj" />
   </ItemGroup>
+
 </Project>

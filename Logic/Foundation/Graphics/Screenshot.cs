@@ -1,28 +1,30 @@
 ﻿using CrossCutting.DataClasses;
+using Logic.Foundation.Encodings.Contract;
 using Logic.Foundation.Graphics.Contract;
+using Logic.Foundation.Screen.Contract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Logic.Foundation.Graphics
 {
     public class Screenshot : IScreenshot
     {
+        private readonly IScreenInformation screenInformation;
+
+        public Screenshot(IScreenInformation screenInformation)
+        {
+            this.screenInformation = screenInformation;
+        }
+
         public Bitmap GetPrimaryScreen()
         {
-            foreach (ScreenInformation screenInformation in GetScreenList())
-            {
-                if (screenInformation.Name == Screen.PrimaryScreen.DeviceName)
-                {
-                    return GetScreen(screenInformation);
-                }
-            }
-            throw new InvalidOperationException("Primary screen not found");
+            return GetScreen(this.screenInformation.GetScreenInformationList()[0]);
         }
 
         public Bitmap GetScreen(ScreenInformation screen)
@@ -49,17 +51,12 @@ namespace Logic.Foundation.Graphics
 
         public Bitmap GetScreen(int screenIndex)
         {
-            IReadOnlyList<ScreenInformation> screenList = this.GetScreenList();
+            IReadOnlyList<ScreenInformation> screenList = this.screenInformation.GetScreenInformationList();
             if ((screenIndex < 0) || (screenIndex >= screenList.Count))
             {
                 throw new ArgumentOutOfRangeException($"{nameof(screenIndex)} = {screenIndex}");
             }
             return GetScreen(screenList[screenIndex]);
-        }
-
-        public IReadOnlyList<ScreenInformation> GetScreenList()
-        {
-            return Screen.AllScreens.Select((x, i) => new ScreenInformation(i, x.DeviceName, x.Bounds.Width, x.Bounds.Height, x.Bounds.X, x.Bounds.Y)).ToList();
         }
     }
 }

@@ -13,5 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\Encodings.Contract\Encodings.Contract.csproj" />
   </ItemGroup>
 </Project>

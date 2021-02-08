@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Logic.Foundation.ScreenSettings</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossCutting\DataClasses\DataClasses.csproj" />
+    <ProjectReference Include="..\Screen.Contract\Screen.Contract.csproj" />
+    <ProjectReference Include="..\Serialization.Contract\Serialization.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

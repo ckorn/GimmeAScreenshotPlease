@@ -55,8 +55,10 @@
 
     protected override Task OnInitializedAsync()
     {
-        clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
-            new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
+        clientWorkflow = new ClientWorkflow(new ClientSettings(
+            new Logic.Foundation.ScreenSettings.ScreenSettings(new JsonDeserializer()),
+            new Screenshot(new Logic.Foundation.ScreenSettings.ScreenSettings(new JsonDeserializer())),
+            new ScreenshotConverter(new BinaryDecoder(), new BinaryEncoder(), new Resize())));
         return base.OnInitializedAsync();
     }
 
