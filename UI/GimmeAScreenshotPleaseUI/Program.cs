@@ -13,7 +13,7 @@ namespace UI.GimmeAScreenshotPleaseUI
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             if (Settings.Default.UpgradePending)
             {
@@ -23,7 +23,7 @@ namespace UI.GimmeAScreenshotPleaseUI
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GimmeAScreenshotPleaseForm());
+            Application.Run(new GimmeAScreenshotPleaseForm(args));
         }
     }
 }

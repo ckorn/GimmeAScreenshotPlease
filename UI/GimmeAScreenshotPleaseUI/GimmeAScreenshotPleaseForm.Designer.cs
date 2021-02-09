@@ -226,6 +226,7 @@ namespace UI.GimmeAScreenshotPleaseUI
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GimmeAScreenshotPleaseForm";
             this.Text = "GimmeAScreenshotPlease";
+            this.Load += new System.EventHandler(this.GimmeAScreenshotPleaseForm_Load);
             this.Resize += new System.EventHandler(this.GimmeAScreenshotPleaseForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceViewModel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreenshot)).EndInit();

@@ -13,6 +13,13 @@ namespace UI.GimmeAScreenshotPleaseUI
     public partial class GimmeAScreenshotPleaseForm : Form
     {
         private readonly GimmeAScreenshotPleaseViewModel viewModel = new GimmeAScreenshotPleaseViewModel();
+        private readonly string[] args;
+
+        public GimmeAScreenshotPleaseForm(string[] args):this()
+        {
+            this.args = args;
+        }
+
         public GimmeAScreenshotPleaseForm()
         {
             InitializeComponent();
@@ -77,6 +84,18 @@ namespace UI.GimmeAScreenshotPleaseUI
         private void notifyIcon_Click(object sender, EventArgs e)
         {
             ShowForm();
+        }
+
+        private void GimmeAScreenshotPleaseForm_Load(object sender, EventArgs e)
+        {
+            if ((this.args?.Length ?? 0) > 0)
+            {
+                if (this.args[0].ToUpper() == "/SERVER")
+                {
+                    this.viewModel.StartServer();
+                    this.WindowState = FormWindowState.Minimized;
+                }
+            }
         }
     }
 }
