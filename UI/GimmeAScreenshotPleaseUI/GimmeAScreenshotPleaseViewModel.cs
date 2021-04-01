@@ -102,7 +102,7 @@ namespace UI.GimmeAScreenshotPleaseUI
                 }
                 else
                 {
-                    return Task.Run(async () => await this.clientWorkflow.GetScreenshotPrimaryScreenAsync(this.Target)).Result;
+                    return Task.Run(async () => await this.clientWorkflow.GetScreenshotPrimaryScreenAsync(this.Target, null)).Result;
                 }
             }).ContinueWith(task =>
              {

@@ -39,10 +39,10 @@ namespace Logic.Domain.Client
             return screenInformationList;
         }
 
-        public async Task<string> GetScreenshotAsBase64Async(string target)
+        public async Task<string> GetScreenshotAsBase64Async(string target, int? ratio)
         {
             return await this.sender.SendAsync(target, ConnectionSettings.PrimaryScreenPipeName,
-                "GimmeAScreenshotPlease");
+                $"ratio={ratio}");
         }
 
         public async Task<string> GetScreenshotAsBase64Async(string target, ScreenInformation screenInformation)
@@ -53,9 +53,9 @@ namespace Logic.Domain.Client
             return result;
         }
 
-        public async Task<Bitmap> GetScreenshotAsync(string target)
+        public async Task<Bitmap> GetScreenshotAsync(string target, int? ratio)
         {
-            string result = await GetScreenshotAsBase64Async(target);
+            string result = await GetScreenshotAsBase64Async(target, ratio);
             Bitmap bitmap = GetBitmapFromResponse(result);
             return bitmap;
         }

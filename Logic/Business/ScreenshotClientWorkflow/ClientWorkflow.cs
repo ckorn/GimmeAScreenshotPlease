@@ -19,9 +19,9 @@ namespace Logic.Business.ScreenshotClientWorkflow
             this.client = client;
         }
 
-        public async Task<Bitmap> GetScreenshotPrimaryScreenAsync(string target)
+        public async Task<Bitmap> GetScreenshotPrimaryScreenAsync(string target, int? ratio)
         {
-            return await this.client.GetScreenshotAsync(target);
+            return await this.client.GetScreenshotAsync(target, ratio);
         }
 
         public async Task<Bitmap> GetScreenshotForScreenAsync(string target, ScreenInformation screenInformation)
@@ -34,9 +34,9 @@ namespace Logic.Business.ScreenshotClientWorkflow
             return await this.client.GetScreenInformationListAsync(target);
         }
 
-        public Task<string> GetScreenshotPrimaryScreenAsBase64Async(string target)
+        public Task<string> GetScreenshotPrimaryScreenAsBase64Async(string target, int? ratio)
         {
-            return this.client.GetScreenshotAsBase64Async(target);
+            return this.client.GetScreenshotAsBase64Async(target, ratio);
         }
 
         public Task<string> GetScreenshotForScreenAsBase64Async(string target, ScreenInformation screenInformation)

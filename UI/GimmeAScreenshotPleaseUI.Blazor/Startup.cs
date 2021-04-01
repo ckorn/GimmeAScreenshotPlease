@@ -1,4 +1,7 @@
 ﻿using Blazored.LocalStorage;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +34,13 @@ namespace UI.GimmeAScreenshotPleaseUI.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services
+              .AddBlazorise(options =>
+              {
+                  options.ChangeTextOnKeyPress = false; // optional
+              })
+              .AddBootstrapProviders()
+              .AddFontAwesomeIcons();
             services.AddCors();
             services.AddBlazoredLocalStorage();
         }

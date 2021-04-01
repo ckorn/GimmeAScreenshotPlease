@@ -14,6 +14,7 @@ namespace CrossCutting.DataClasses
         public int Height { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public int? Ratio { get; set; }
 
         public ScreenInformation()
         {

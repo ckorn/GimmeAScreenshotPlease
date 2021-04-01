@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Logic.Domain.Server
 {
@@ -41,7 +42,26 @@ namespace Logic.Domain.Server
         {
             string Send(string text) 
             {
-                string base64 = GetScreenshotAsText(this.screenshot.GetPrimaryScreen(), maxWidth, maxHeight);
+                Regex ratioRegex = new Regex(@"ratio=(?<ratio>\d+)");
+                Match match = ratioRegex.Match(text);
+                int? ratio = null;
+                if (match.Success)
+                {
+                    string ratioValue = match.Groups["ratio"].Value;
+                    if (!string.IsNullOrEmpty(ratioValue))
+                    {
+                        ratio = Int32.Parse(ratioValue);
+                    }
+                }
+                string base64;
+                if (ratio != null)
+                {
+                    base64 = GetScreenshotAsText(this.screenshot.GetPrimaryScreen(), ratio.Value);
+                }
+                else
+                {
+                    base64 = GetScreenshotAsText(this.screenshot.GetPrimaryScreen(), maxWidth, maxHeight);
+                }
                 return base64;
             }
             this.receiver.Start(ConnectionSettings.PrimaryScreenPipeName, Send);
@@ -52,7 +72,15 @@ namespace Logic.Domain.Server
             string Send(string text)
             {
                 ScreenInformation screenInformation = this.deserializer.Deserialize<ScreenInformation>(text);
-                string base64 = GetScreenshotAsText(this.screenshot.GetScreen(screenInformation.Index), maxWidth, maxHeight);
+                string base64;
+                if (screenInformation.Ratio != null)
+                {
+                    base64 = GetScreenshotAsText(this.screenshot.GetScreen(screenInformation.Index), screenInformation.Ratio.Value);
+                }
+                else
+                {
+                    base64 = GetScreenshotAsText(this.screenshot.GetScreen(screenInformation.Index), maxWidth, maxHeight);
+                }
                 return base64;
             }
             this.receiver.Start(ConnectionSettings.ScreenPipeName, Send);
@@ -67,6 +95,13 @@ namespace Logic.Domain.Server
                 return returnValue;
             }
             this.receiver.Start(ConnectionSettings.ScreenListPipeName, Send);
+        }
+
+        private string GetScreenshotAsText(Bitmap screenshot, int ratio) 
+        {
+            int maxWidth = screenshot.Width * ratio / 100;
+            int maxHeight = screenshot.Height * ratio / 100;
+            return GetScreenshotAsText(screenshot, maxWidth, maxHeight);
         }
 
         private string GetScreenshotAsText(Bitmap screenshot, int maxWidth, int maxHeight) 

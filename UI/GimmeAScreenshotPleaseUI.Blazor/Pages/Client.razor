@@ -3,24 +3,48 @@
 
 <h1>Client</h1>
 
-<p>Target: <input name="target" @bind="target" /></p>
-<p>
-    <button class="btn btn-primary" @onclick="@(async () => await GetScreensAsync())">Get screens</button>
-    <select @bind="screenInformationIndex">
-        @if (screenInformationList != null)
-        {
-            @foreach (ScreenInformation screenInformation in screenInformationList)
-            {
-                <option value="@screenInformation.Index">@screenInformation.Name</option>
-            }
-        }
-    </select>
-</p>
-<p><button class="btn btn-primary" @onclick="@(async () => await GetAsync())">Get</button></p>
+<Fields>
+    <Field ColumnSize="ColumnSize.Is4.OnDesktop">
+        <Field Horizontal="true">
+            <FieldLabel>Target:</FieldLabel>
+            <FieldBody>
+                <TextEdit @bind-Text="@target"></TextEdit>
+            </FieldBody>
+        </Field>
+    </Field>
+    <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+        <Field Horizontal="true">
+            <FieldLabel>Ratio:</FieldLabel>
+            <FieldBody>
+                <Select TValue="int" @bind-SelectedValue="@ratioSelected">
+                    @foreach (int ratio in ratioList)
+                    {
+                        <SelectItem Value="@ratio">@ratio %</SelectItem>
+                    }
+                </Select>
+            </FieldBody>
+        </Field>
+    </Field>
+    <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+        <Button Color="Color.Primary" Clicked="@(async () => await GetScreensAsync())">Get screens</Button>
+    </Field>
+    <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+        <SelectList TItem="ScreenInformation"
+                    TValue="int"
+                    Data="@screenInformationList"
+                    TextField="@((item)=>item.Name)"
+                    ValueField="@((item)=>item.Index)"
+                    SelectedValue="@screenInformationIndex"
+                    SelectedValueChanged="@OnSelectedScreenChanged" />
+    </Field>
+    <Field ColumnSize="ColumnSize.Is1.OnDesktop">
+        <Button Color="Color.Primary" Clicked="@(async () => await GetAsync())">Get</Button>
+    </Field>
+</Fields>
 
 <p><img hidden="@imageDataHidden" src="@imageData" /></p>
 
-@if (screenInformationList != null)
+@if ((screenInformationList?.Count ?? 0) > 0)
 {
     <table class="table">
         <thead>
@@ -49,14 +73,20 @@
     private string target = "";
     private string imageData = "";
     private bool imageDataHidden = true;
+    private List<int> ratioList = new List<int>();
+    private int ratioSelected = 5;
     private IClientWorkflow clientWorkflow;
-    private IReadOnlyList<ScreenInformation> screenInformationList = null;
-    private int? screenInformationIndex = null;
+    private IReadOnlyList<ScreenInformation> screenInformationList = new List<ScreenInformation>();
+    private int screenInformationIndex = -1;
 
     protected override Task OnInitializedAsync()
     {
         clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
             new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
+        for (int i = 5; i <= 100; i+=5)
+        {
+            ratioList.Add(i);
+        }
         return base.OnInitializedAsync();
     }
 
@@ -64,40 +94,53 @@
     {
         if (firstRender)
         {
-            await GetTargetFromLocalStorage();
+            await LoadLocalStorage();
             StateHasChanged();
         }
+    }
+
+    private void OnSelectedScreenChanged(int value)
+    {
+        screenInformationIndex = value;
     }
 
     private async Task GetAsync()
     {
         string base64 = "";
-        if (screenInformationIndex == null)
+        if (screenInformationIndex < 0)
         {
-            base64 = await this.clientWorkflow.GetScreenshotPrimaryScreenAsBase64Async(this.target);
+            base64 = await this.clientWorkflow.GetScreenshotPrimaryScreenAsBase64Async(this.target, ratioSelected);
         }
         else
         {
-            ScreenInformation screenInformation = this.screenInformationList.Single(x => x.Index == screenInformationIndex.Value);
+            ScreenInformation screenInformation = this.screenInformationList.Single(x => x.Index == screenInformationIndex);
+            screenInformation.Ratio = ratioSelected;
             base64 = await this.clientWorkflow.GetScreenshotForScreenAsBase64Async(this.target, screenInformation);
         }
         this.imageData = (!string.IsNullOrEmpty(base64)) ? $"data:image/jpeg;base64,{base64}" : string.Empty;
         this.imageDataHidden = string.IsNullOrEmpty(base64);
-        await SaveTarget();
+        await SaveLocalStorage();
     }
 
     private async Task GetScreensAsync()
     {
         screenInformationList = await this.clientWorkflow.GetScreenInformationListAsync(this.target);
+        screenInformationIndex = ((screenInformationList?.Count ?? 0) > 0) ? screenInformationList.First().Index : -1;
     }
 
-    private async Task SaveTarget()
+    private async Task SaveLocalStorage()
     {
         await localStorage.SetItemAsync("target", this.target);
+        await localStorage.SetItemAsync("ratio", this.ratioSelected);
     }
 
-    private async Task GetTargetFromLocalStorage()
+    private async Task LoadLocalStorage()
     {
         this.target = await localStorage.GetItemAsync<string>("target");
+        int ratio = await localStorage.GetItemAsync<int>("ratio");
+        if (this.ratioList.Contains(ratio))
+        {
+            this.ratioSelected = ratio;
+        }
     }
 }
