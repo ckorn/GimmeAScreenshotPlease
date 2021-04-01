@@ -1,4 +1,4 @@
-﻿@page "/client"
+﻿@page "/"
 @inject ILocalStorageService localStorage
 
 <h1>Client</h1>
@@ -83,7 +83,7 @@
     {
         clientWorkflow = new ClientWorkflow(new ScreenshotClient(new HttpSender(),
             new BinaryDecoder(), new JsonSerializer(), new JsonDeserializer()));
-        for (int i = 5; i <= 100; i+=5)
+        for (int i = 5; i <= 100; i += 5)
         {
             ratioList.Add(i);
         }

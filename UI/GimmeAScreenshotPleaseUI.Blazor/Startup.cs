@@ -14,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UI.GimmeAScreenshotPleaseUI.Blazor.Data;
 
 namespace UI.GimmeAScreenshotPleaseUI.Blazor
 {
@@ -33,7 +32,6 @@ namespace UI.GimmeAScreenshotPleaseUI.Blazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services
               .AddBlazorise(options =>
               {
